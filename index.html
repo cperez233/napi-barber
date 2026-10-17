@@ -11,6 +11,8 @@
 <meta property="og:title" content="Ñapi Barber · Armenia y Auckland">
 <meta property="og:description" content="Corte, barba y corte + barba. Se agenda por WhatsApp.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23CFE2D8'/%3E%3Cpath d='M14 19c8-9 16-9 21-3s13 6 17-3' fill='none' stroke='%2313201B' stroke-width='6' stroke-linecap='round'/%3E%3Cpath d='M17 57V28h9l11 16V28h9v29h-9L26 41v16z' fill='%23C62F23'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -423,7 +425,7 @@ main, header, footer { position: relative; z-index: 1; }
 .place-country { display: block; margin-top: 6px; font-weight: 600; font-size: 15px; color: var(--mute); }
 .place-time { display: block; margin-top: 10px; font-size: 15.5px; color: var(--mute); }
 .place-time b { color: var(--ink); font-weight: 800; font-variant-numeric: tabular-nums; }
-.place-tag { position: absolute; top: -12px; right: 18px; font: 400 13px/1 var(--fd); background: var(--red); color: var(--cream); padding: 8px 10px 7px; border-radius: 6px; transform: rotate(4deg); box-shadow: 0 2px 0 var(--ink); }
+.place-tag { position: absolute; z-index: 3; top: -12px; left: 18px; font: 400 13px/1 var(--fd); background: var(--red); color: var(--cream); padding: 8px 10px 7px; border-radius: 6px; transform: rotate(4deg); box-shadow: 0 2px 0 var(--ink); }
 .place-tag.other { background: var(--cream); color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
 .addr { margin: 22px 0 14px; font-size: 17px; font-weight: 600; }
 .place .btn { width: 100%; }
@@ -472,6 +474,148 @@ main, header, footer { position: relative; z-index: 1; }
 .anim-nudge { animation: nudge 7s var(--ease) infinite 3s; }
 @keyframes nudge { 0%, 88%, 100% { transform: rotate(0); } 91% { transform: rotate(-14deg); } 94% { transform: rotate(10deg); } 97% { transform: rotate(-5deg); } }
 
+
+/* ---------- Ronda 3: más capas ---------- */
+/* Barra de progreso: la cuchilla recorre el header */
+.bar-prog { position: absolute; left: 0; right: 0; bottom: -7px; height: 7px; overflow: hidden; opacity: 0; transition: opacity .3s var(--ease); pointer-events: none; }
+.bar.compact .bar-prog { opacity: 1; }
+.bar-prog i { position: absolute; inset: 0; transform: translateX(-100%); will-change: transform;
+  background: repeating-linear-gradient(90deg, var(--ink) 0 3px, transparent 3px 6px) top / 100% 3px no-repeat, linear-gradient(var(--red), var(--red)) bottom / 100% 4px no-repeat; }
+
+/* Polaroids de estilos pegadas junto al espejo */
+.pols { display: flex; justify-content: center; margin-top: 34px; padding: 0 10px; position: relative; z-index: 2; }
+.pol {
+  position: relative; display: block; width: 33%; max-width: 160px; margin: 0 -8px; padding: 6px 6px 30px; background: #FFFEFA;
+  box-shadow: var(--sh-2); transform: rotate(var(--r, 0deg)); text-decoration: none; color: var(--ink);
+  transition: transform .5s var(--spring), box-shadow .4s var(--ease);
+}
+.pol:nth-child(2) { margin-top: -14px; z-index: 1; }
+.pol img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: #ddd; }
+.pol span { position: absolute; left: 4px; right: 4px; bottom: 7px; text-align: center; font: 400 14px/1 var(--fm); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pol::before { content: ""; position: absolute; top: -10px; left: 50%; width: 58px; height: 20px; margin-left: -29px; background: rgba(251,246,236,.82); box-shadow: 0 1px 2px rgba(19,32,27,.18); transform: rotate(-4deg); z-index: 2; }
+.pol:active { transform: rotate(0deg) scale(.97); }
+@media (hover: hover) and (pointer: fine) { .pol:hover { transform: rotate(0deg) translateY(-8px) scale(1.04); box-shadow: var(--sh-3); z-index: 3; } }
+@media (min-width: 1280px) {
+  .pols { position: absolute; inset: 0; margin: 0; padding: 0; display: block; pointer-events: none; }
+  .pol { position: absolute; width: 196px; max-width: none; margin: 0; pointer-events: auto; }
+  .pol { width: 180px; }
+  .pol:nth-child(1) { left: -250px; top: -50px; }
+  .pol:nth-child(2) { right: -262px; top: -120px; margin: 0; z-index: 2; }
+  .pol:nth-child(3) { right: -196px; top: 40px; z-index: 1; }
+}
+.intro .pol { opacity: 0; }
+.safe .pol { opacity: 1; }
+
+/* Precios: miniatura en cada fila y foto que sigue al cursor */
+.row-top { align-items: center; }
+.row-top .dots { transform: none; }
+.row-thumb { width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px var(--ink); transition: transform .5s var(--spring); }
+.row.lit .row-thumb { transform: rotate(-8deg) scale(1.08); }
+@media (hover: hover) and (pointer: fine) { .row:hover .row-thumb { transform: rotate(-8deg) scale(1.08); } }
+@media (min-width: 900px) { .row-thumb { width: 64px; height: 64px; } }
+.peek {
+  position: absolute; left: 0; top: 0; z-index: 5; width: 220px; aspect-ratio: 4 / 5; pointer-events: none; display: none;
+  padding: 8px; background: #FFFEFA; box-shadow: var(--sh-3); opacity: 0; transition: opacity .25s var(--ease);
+}
+.peek img { width: 100%; height: 100%; object-fit: cover; }
+.peek.on { opacity: 1; }
+@media (hover: hover) and (pointer: fine) { .peek { display: block; } }
+
+/* La pasada grande: blanco y negro a color con el scroll */
+.pasada { position: relative; height: 210svh; background: var(--ink); }
+.pa-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.pa-img, .pa-img img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.pa-img img { object-fit: cover; object-position: 62% 40%; }
+.pa-bw img { filter: grayscale(1) contrast(1.08) brightness(.72); }
+.pa-win { position: absolute; inset: 0; overflow: hidden; will-change: transform; transform: translate3d(0, 100%, 0); }
+.pa-win-in { position: absolute; inset: 0; will-change: transform; transform: translate3d(0, -100%, 0); }
+.pa-blade { position: absolute; left: 0; right: 0; top: 0; height: 0; z-index: 3; will-change: transform; transform: translate3d(0, 100svh, 0); }
+.pa-blade .blade-bar { top: -12px; }
+.pa-tag { position: absolute; right: var(--gut); font: 400 13px/1 var(--fd); padding: 8px 10px 7px; border-radius: 6px; letter-spacing: .04em; }
+.pa-tag.up { bottom: 22px; background: rgba(19,32,27,.85); color: var(--cream); }
+.pa-tag.down { top: 22px; background: var(--red); color: var(--cream); box-shadow: 0 2px 0 var(--ink); }
+.pa-copy { position: absolute; left: var(--gut); right: var(--gut); bottom: calc(96px + var(--safe-b)); z-index: 4; color: var(--cream); }
+.pa-copy::before { content: ""; position: absolute; left: -20%; right: -20%; top: -40%; bottom: -60%; z-index: -1; background: radial-gradient(ellipse at 30% 70%, rgba(19,32,27,.7), transparent 65%); }
+.pa-kick { margin: 0 0 8px; font-weight: 700; font-size: 17px; }
+.pa-h { margin: 0; font: 400 clamp(36px, 10.4vw, 160px)/1.06 var(--fd); text-shadow: .04em .04em 0 var(--ink); }
+.pa-h em { font-style: normal; color: var(--red); }
+.pa-credit { position: absolute; top: 74px; left: var(--gut); z-index: 4; font-size: 12.5px; color: rgba(251,246,236,.7); }
+
+/* Así se agenda: tres pasos con la máquina bajando por el riel */
+.proc { background: var(--ink); color: var(--cream); }
+.proc .eyebrow { color: rgba(251,246,236,.86); }
+.proc .h2 { color: var(--cream); }
+.proc .shave::after { background: repeating-linear-gradient(90deg, var(--cream) 0 3px, transparent 3px 7px) top / 100% 5px no-repeat, linear-gradient(var(--cream), var(--cream)) bottom / 100% 5px no-repeat; }
+.track { position: relative; margin-top: clamp(40px, 6vw, 72px); padding-left: 64px; }
+.rail { position: absolute; left: 22px; top: 0; bottom: 0; width: 4px; }
+.rail::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(rgba(251,246,236,.28) 0 8px, transparent 8px 16px); }
+.rail-fill { position: absolute; inset: 0; background: var(--red); border-radius: 2px; clip-path: inset(0 0 100% 0); }
+.rail-clip { position: absolute; left: 50%; top: 0; width: 46px; height: 76px; margin-left: -23px; will-change: transform; color: var(--cream); }
+.rail-clip svg { width: 100%; height: 100%; overflow: visible; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(60px, 9vw, 120px); }
+.step { position: relative; }
+.step-n {
+  position: absolute; left: -64px; top: -4px; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--ink); color: var(--cream); font: 400 20px/1 var(--fd); box-shadow: inset 0 0 0 3px rgba(251,246,236,.35);
+  transition: background-color .35s var(--ease), box-shadow .35s var(--ease), transform .5s var(--spring);
+}
+.step.hit .step-n { background: var(--red); box-shadow: inset 0 0 0 3px var(--red), 0 3px 0 #000; transform: scale(1.12); }
+.step h3 { margin: 0; font: 400 clamp(26px, 4vw, 46px)/1.1 var(--fd); }
+.step p { margin: 12px 0 0; max-width: 44ch; color: rgba(251,246,236,.74); font-size: 17px; }
+.step figure { position: relative; margin: 22px 0 0; border-radius: 18px; overflow: hidden; clip-path: inset(0 round 18px); aspect-ratio: 3 / 2; max-width: 620px; box-shadow: var(--sh-3); }
+.step figure img { width: 100%; height: 115%; object-fit: cover; will-change: transform; }
+.step figure figcaption { position: absolute; left: 12px; bottom: 10px; font-size: 12.5px; color: rgba(251,246,236,.8); }
+.step .btn { margin-top: 24px; }
+.chat { margin-top: 22px; display: grid; gap: 10px; max-width: 420px; }
+.bub { position: relative; max-width: 86%; padding: 12px 14px 22px; border-radius: 16px; font-size: 16px; line-height: 1.35; opacity: 0; transform: translateY(14px) scale(.96); transition: opacity .4s var(--ease), transform .5s var(--spring); }
+.bub.on { opacity: 1; transform: none; }
+.bub.out { justify-self: end; background: var(--cream); color: var(--ink); border-bottom-right-radius: 4px; transform-origin: 100% 100%; }
+.bub.in { justify-self: start; background: #24352E; color: var(--cream); border-bottom-left-radius: 4px; transform-origin: 0 100%; }
+.bub small { position: absolute; right: 10px; bottom: 5px; font-size: 11.5px; opacity: .7; display: inline-flex; gap: 3px; align-items: center; }
+.ticks { width: 17px; height: 11px; color: #8FA79C; transition: color .4s var(--ease); }
+.bub.read .ticks { color: var(--red); }
+.typing { justify-self: start; display: inline-flex; gap: 5px; padding: 14px 16px; border-radius: 16px; background: #24352E; opacity: 0; transition: opacity .3s; }
+.typing.on { opacity: 1; }
+.typing i { width: 7px; height: 7px; border-radius: 50%; background: rgba(251,246,236,.7); animation: dot 1s infinite ease-in-out; }
+.typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes dot { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-5px); opacity: 1; } }
+@media (min-width: 900px) {
+  .pa-copy { bottom: calc(56px + var(--safe-b)); }
+  .track { padding-left: 0; }
+  .rail { left: 50%; margin-left: -2px; }
+  .step { width: calc(50% - 70px); }
+  .step:nth-child(even) { margin-left: auto; }
+  .step-n { left: auto; right: -94px; }
+  .step:nth-child(even) .step-n { right: auto; left: -94px; }
+}
+
+/* Postales en los lugares */
+.postal { position: relative; margin: -24px -20px 0; border-radius: 22px 22px 0 0; overflow: hidden; clip-path: inset(0 round 22px 22px 0 0); aspect-ratio: 16 / 9; }
+@media (min-width: 900px) { .postal { margin: -32px -30px 0; } }
+.postal img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.postal::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 50%, rgba(19,32,27,.45)); }
+.postal-hi { position: absolute; left: 16px; top: 36px; z-index: 1; font: 400 clamp(20px, 2.4vw, 28px)/1.05 var(--fm); color: var(--cream); text-shadow: 0 1px 2px rgba(19,32,27,.9), 0 0 14px rgba(19,32,27,.7); transform: rotate(-4deg); transform-origin: 0 0; }
+.postal-credit { position: absolute; right: 12px; bottom: 2px; z-index: 1; font-size: 12px; color: rgba(251,246,236,.88); text-decoration: none; padding: 14px 0 12px; }
+.postal-stamp {
+  position: absolute; right: 14px; top: 12px; z-index: 1; width: 64px; height: 76px; padding: 5px; background: var(--cream);
+  -webkit-mask: radial-gradient(circle 4px at 4px 4px, transparent 98%, #000) -4px -4px / 9px 9px; mask: radial-gradient(circle 4px at 4px 4px, transparent 98%, #000) -4px -4px / 9px 9px;
+  transform: rotate(6deg);
+}
+.postal-stamp span { display: grid; place-items: center; width: 100%; height: 100%; background: var(--red); color: var(--cream); font: 400 15px/1 var(--fd); text-align: center; }
+.place .place-top { margin-top: -54px; position: relative; z-index: 2; align-items: flex-end; }
+.place .clock { background: #FFFDF8; }
+@media (hover: hover) and (pointer: fine) { .place:hover .postal img { transform: scale(1.05); } }
+.chip-ref { position: absolute; right: 8px; top: 12px; z-index: 2; font-size: 11.5px; font-weight: 700; background: rgba(251,246,236,.9); color: var(--ink); padding: 4px 7px; border-radius: 999px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pasada { height: auto; }
+  .pa-stage { position: relative; height: 100svh; }
+  .pa-win, .pa-win-in { transform: none !important; }
+  .pa-blade, .pa-tag { display: none; }
+  .bub, .typing { opacity: 1; transform: none; transition: none; }
+  .rail-fill { clip-path: none; }
+}
+
 .is-paused, .is-paused * { animation-play-state: paused !important; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -503,6 +647,7 @@ main, header, footer { position: relative; z-index: 1; }
       <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
     </div>
   </div>
+  <span class="bar-prog" aria-hidden="true"><i id="prog"></i></span>
 </header>
 
 <!-- Formas reutilizadas: el mechón (virgulilla) e íconos -->
@@ -547,6 +692,11 @@ main, header, footer { position: relative; z-index: 1; }
           </a>
           <p class="cta-note" data-i18n="cta_note">Escribes, cuadramos la hora y listo.</p>
         </div>
+        <div class="pols">
+          <a class="pol" href="#cortes" style="--r:-7deg"><img src="img/cat-04.webp" alt="" width="800" height="1000" decoding="async"><span data-i18n="pol_1">Fade y raya</span></a>
+          <a class="pol" href="#cortes" style="--r:5deg"><img src="img/cat-02.webp" alt="" width="800" height="1000" decoding="async"><span data-i18n="pol_2">Con rizos</span></a>
+          <a class="pol" href="#cortes" style="--r:-3deg"><img src="img/cat-05.webp" alt="" width="800" height="1000" decoding="async"><span data-i18n="pol_3">Barba</span></a>
+        </div>
       </div>
     </div>
     <div class="zocalo" aria-hidden="true"></div>
@@ -573,6 +723,23 @@ main, header, footer { position: relative; z-index: 1; }
       <span class="screw tl" aria-hidden="true"></span><span class="screw tr" aria-hidden="true"></span><span class="screw bl" aria-hidden="true"></span><span class="screw br" aria-hidden="true"></span>
       <div class="board-head"><b data-i18n="board_t">Precios</b><span id="board-sub"></span></div>
       <div id="rows"></div>
+      <div class="peek" id="peek" aria-hidden="true"><img alt="" id="peek-img" src="img/svc-corte.webp"></div>
+    </div>
+  </section>
+
+  <!-- LA PASADA: blanco y negro a color con el scroll -->
+  <section class="pasada" id="pasada" aria-labelledby="h-pasada">
+    <div class="pa-stage">
+      <picture class="pa-img pa-bw"><source media="(max-width: 767px)" srcset="img/reveal-tall.webp"><img src="img/reveal-wide.webp" alt="Barbero pasando la máquina en un fade (foto de referencia)" width="2000" height="1333" loading="lazy" decoding="async"></picture>
+      <div class="pa-win" id="pa-win"><div class="pa-win-in" id="pa-win-in">
+        <picture class="pa-img"><source media="(max-width: 767px)" srcset="img/reveal-tall.webp"><img src="img/reveal-wide.webp" alt="" width="2000" height="1333" loading="lazy" decoding="async"></picture>
+      </div></div>
+      <div class="pa-blade" id="pa-blade" aria-hidden="true"><div class="blade-bar"></div><span class="pa-tag up" data-i18n="pa_before">Antes</span><span class="pa-tag down" data-i18n="pa_after">Después</span></div>
+      <span class="pa-credit" data-i18n="ref_photo">Foto de referencia</span>
+      <div class="pa-copy">
+        <p class="pa-kick" data-i18n="pa_kick">Baja despacio, que la máquina va pasando.</p>
+        <h2 class="pa-h" id="h-pasada" data-i18n-html="pa_h">Una pasada <br>y <em>ya</em>.</h2>
+      </div>
     </div>
   </section>
 
@@ -587,6 +754,42 @@ main, header, footer { position: relative; z-index: 1; }
     <div class="poster rv">
       <div class="poster-head"><b data-i18n="poster_t">Cortes Ñapi</b><span data-i18n="poster_s">Pídelo por número</span></div>
       <div class="cuts" id="cuts"></div>
+    </div>
+  </section>
+
+  <!-- ASÍ SE AGENDA -->
+  <section class="sec proc" id="proceso" aria-labelledby="h-proc">
+    <p class="eyebrow rv" data-i18n="proc_eye">Así se agenda</p>
+    <h2 class="h2 shave" id="h-proc"><span class="txt" data-i18n-html="proc_h">Tres pasadas y <em>listo</em></span></h2>
+    <div class="track" id="track">
+      <div class="rail" aria-hidden="true"><i class="rail-fill" id="rail-fill"></i>
+        <span class="rail-clip" id="rail-clip"><svg viewBox="0 0 46 76"><rect x="7" y="14" width="32" height="58" rx="12" fill="#FBF6EC"/><rect x="7" y="14" width="32" height="58" rx="12" fill="none" stroke="#13201B" stroke-width="2"/><rect x="5" y="4" width="36" height="12" rx="3" fill="#C9D1CD" stroke="#13201B" stroke-width="2"/><path d="M8 4V0M13 4V0M18 4V0M23 4V0M28 4V0M33 4V0M38 4V0" stroke="#C9D1CD" stroke-width="2.4"/><rect x="18" y="34" width="10" height="18" rx="5" fill="#C62F23"/><path d="M14 64h18" stroke="#13201B" stroke-width="2" stroke-linecap="round"/></svg></span>
+      </div>
+      <ol class="steps">
+        <li class="step rv" data-step="1">
+          <span class="step-n" aria-hidden="true">1</span>
+          <h3 data-i18n="s1_t">Me escribes</h3>
+          <p data-i18n="s1_p">Por WhatsApp, al +57 350 574 8769. Me dices qué quieres y cuándo te sirve.</p>
+          <div class="chat" id="chat" aria-hidden="true">
+            <div class="bub out" id="bub-out"><span data-i18n="chat_out">Hola Ñapi, quiero agendar un corte</span><small>9:41 <svg class="ticks" viewBox="0 0 17 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6l3 3 6-7"/><path d="M7 9l1 0 6-7"/></svg></small></div>
+            <div class="typing" id="typing"><i></i><i></i><i></i></div>
+            <div class="bub in" id="bub-in"><span data-i18n="chat_in">¡Hágale! ¿Qué día y a qué hora te sirve?</span><small>9:42</small></div>
+          </div>
+        </li>
+        <li class="step rv" data-step="2">
+          <span class="step-n" aria-hidden="true">2</span>
+          <h3 data-i18n="s2_t">Cuadramos y te sientas</h3>
+          <p data-i18n="s2_p">Te confirmo la hora. Llegas, te sientas y, si tienes una foto del corte que quieres, me la muestras.</p>
+          <figure><img src="img/step-silla.webp" alt="Sillas de barbería frente al espejo (foto de referencia)" width="1600" height="1063" loading="lazy" decoding="async" data-par><figcaption data-i18n="ref_photo">Foto de referencia</figcaption></figure>
+        </li>
+        <li class="step rv" data-step="3">
+          <span class="step-n" aria-hidden="true">3</span>
+          <h3 data-i18n="s3_t">Te miras al espejo</h3>
+          <p data-i18n="s3_p">Te pasas la mano por la nuca y listo. La foto de perfil nueva corre por tu cuenta.</p>
+          <figure><img src="img/cat-01.webp" alt="Fade recién hecho visto de lado (foto de referencia)" width="800" height="1000" loading="lazy" decoding="async" data-par style="object-position: 50% 30%"><figcaption data-i18n="ref_photo">Foto de referencia</figcaption></figure>
+          <a class="btn btn-red js-wa" href="https://wa.me/573505748769?text=Hola%20%C3%91api%2C%20quiero%20agendar%20un%20corte" target="_blank" rel="noopener"><svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wa"/></svg><span data-i18n="cta">Agendar por WhatsApp</span></a>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -617,10 +820,12 @@ main, header, footer { position: relative; z-index: 1; }
     <a id="ig-link" href="https://www.instagram.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg><span id="ig-txt" class="ph">@[usuario]</span></a>
     <a href="#precios"><span data-i18n="nav_prices">Precios</span></a>
     <a href="#cortes"><span data-i18n="nav_cuts">Cortes</span></a>
+    <a href="#proceso"><span data-i18n="nav_how">Cómo agendar</span></a>
     <a href="#donde"><span data-i18n="nav_where">Cómo llegar</span></a>
   </nav>
   <div class="foot-meta">
     <span>© <span id="yr">2026</span> Ñapi Barber · Armenia · Auckland</span>
+    <span><span data-i18n="credits">Fotos de referencia:</span> <a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash</a> · Valle de Cocora: <a href="https://www.flickr.com/photos/mckaysavage/8806558224" target="_blank" rel="noopener">McKay Savage</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a></span>
     <span><span data-i18n="credit">Motilado a mano por</span> <a href="https://cristianperez.me" target="_blank" rel="noopener">Cristian Pérez</a>⁠​‌​​​​‌‌​‌‌‌​​‌​​‌‌​‌​​‌​‌‌‌​​‌‌​‌‌‌​‌​​​‌‌​‌​​‌​‌‌​​​​‌​‌‌​‌‌‌​​​‌​​​​​​‌​‌​​​​‌‌​​​​‌‌‌​‌​‌​​‌​‌‌‌​​‌​​‌‌​​‌​‌​‌‌‌‌​‌​​​‌​​​​​‌‌​​​​‌​‌​‌‌​‌‌‌​​‌​​​​​​‌‌​‌​​​​‌‌‌​‌​​​‌‌‌​‌​​​‌‌‌​​​​​‌‌‌​​‌‌​​‌‌‌​‌​​​‌​‌‌‌‌​​‌​‌‌‌‌​‌‌​​​‌‌​‌‌‌​​‌​​‌‌​‌​​‌​‌‌‌​​‌‌​‌‌‌​‌​​​‌‌​‌​​‌​‌‌​​​​‌​‌‌​‌‌‌​​‌‌‌​​​​​‌‌​​‌​‌​‌‌‌​​‌​​‌‌​​‌​‌​‌‌‌‌​‌​​​‌​‌‌‌​​‌‌​‌‌​‌​‌‌​​‌​‌⁠</span>
   </div>
 </footer>
@@ -659,16 +864,18 @@ const CONFIG = {
       hours: [null, null, null, null, null, null, null],
     },
   },
-  // Fotos: pon los archivos en /fotos y escribe la ruta en src (ej: "fotos/corte-1.jpg").
+  // Catálogo: hoy usa fotos de referencia (stock: true muestra la etiqueta "Foto de referencia").
+  // Cuando haya fotos propias: ponlas en /fotos, cambia src (ej: "fotos/corte-1.jpg") y pon stock: false.
   cuts: [
-    { src: null, name: { es: "[Nombre del corte]", en: "[Cut name]" }, detail: { es: "[Detalle: máquina, tijera, cuánto tarda]", en: "[Detail: clippers, scissors, time]" } },
-    { src: null, name: { es: "[Nombre del corte]", en: "[Cut name]" }, detail: { es: "[Detalle del corte]", en: "[Cut detail]" } },
-    { src: null, name: { es: "[Nombre del corte]", en: "[Cut name]" }, detail: { es: "[Detalle del corte]", en: "[Cut detail]" } },
-    { src: null, name: { es: "[Barba]", en: "[Beard]" }, detail: { es: "[Detalle de la barba]", en: "[Beard detail]" } },
-    { src: null, name: { es: "[Nombre del corte]", en: "[Cut name]" }, detail: { es: "[Detalle del corte]", en: "[Cut detail]" } },
-    { src: null, name: { es: "[Corte + barba]", en: "[Cut + beard]" }, detail: { es: "[Detalle del corte]", en: "[Cut detail]" } },
+    { src: "img/cat-01.webp", stock: true, name: { es: "Fade bajo", en: "Low fade" }, detail: { es: "Degradado bajo a máquina y arriba con tijera.", en: "Low clipper fade, scissors on top." } },
+    { src: "img/cat-02.webp", stock: true, name: { es: "Fade con rizos", en: "Curly top fade" }, detail: { es: "Lados bajitos y los rizos arriba, definidos.", en: "Short sides, defined curls on top." } },
+    { src: "img/cat-03.webp", stock: true, name: { es: "Crop texturizado", en: "Textured crop" }, detail: { es: "Arriba con textura y la nuca degradada.", en: "Textured top, faded neckline." } },
+    { src: "img/cat-04.webp", stock: true, name: { es: "Fade con raya", en: "Fade with hard part" }, detail: { es: "Degradado alto y la raya marcada a navaja.", en: "High fade with a razor-cut part." } },
+    { src: "img/cat-05.webp", stock: true, name: { es: "Barba perfilada", en: "Lined-up beard" }, detail: { es: "Contorno marcado y el fade unido a la barba.", en: "Sharp lines, fade blended into the beard." } },
+    { src: "img/cat-06.webp", stock: true, name: { es: "Barba completa", en: "Full beard" }, detail: { es: "Barba larga, rebajada y con forma.", en: "Full beard, trimmed and shaped." } },
   ],
 };
+const SVC_IMG = { corte: "img/svc-corte.webp", barba: "img/svc-barba.webp", combo: "img/svc-combo.webp", otro: "img/svc-otro.webp" };
 
 /* ============================================================
    TEXTOS (ES / EN)
@@ -703,7 +910,6 @@ const T = {
     gal_tap: "Toca un corte pa' ver el detalle y pedirlo por número.",
     gal_hover: "Pasa el mouse por un corte pa' ver el detalle y pedirlo por número.",
     poster_t: "Cortes Ñapi",
-    poster_s: "Pídelo por número",
     ph: "foto pendiente",
     want: "Quiero el",
     cut: "Corte",
@@ -729,6 +935,22 @@ const T = {
     wa_cut: (n) => `Hola Ñapi, quiero agendar el corte número ${n}`,
     title: "Ñapi Barber · Armenia y Auckland",
     loc: "es-CO",
+    pol_1: "Fade y raya", pol_2: "Con rizos", pol_3: "Barba",
+    ref_photo: "Foto de referencia",
+    pa_before: "Antes", pa_after: "Después",
+    pa_kick: "Baja despacio, que la máquina va pasando.",
+    pa_h: "Una pasada <br>y <em>ya</em>.",
+    poster_s: "Estilos de referencia · pídelo por número",
+    proc_eye: "Así se agenda",
+    proc_h: "Tres pasadas y <em>listo</em>",
+    s1_t: "Me escribes", s1_p: "Por WhatsApp, al +57 350 574 8769. Me dices qué quieres y cuándo te sirve.",
+    s2_t: "Cuadramos y te sientas", s2_p: "Te confirmo la hora. Llegas, te sientas y, si tienes una foto del corte que quieres, me la muestras.",
+    s3_t: "Te miras al espejo", s3_p: "Te pasas la mano por la nuca y listo. La foto de perfil nueva corre por tu cuenta.",
+    chat_out: "Hola Ñapi, quiero agendar un corte",
+    chat_in: "¡Hágale! ¿Qué día y a qué hora te sirve?",
+    hi_from: { armenia: "Saludos desde el Quindío", auckland: "Saludos desde Auckland" },
+    credits: "Fotos de referencia:",
+    nav_how: "Cómo agendar",
   },
   en: {
     city_label: "City", lang_label: "Language",
@@ -759,7 +981,6 @@ const T = {
     gal_tap: "Tap a cut for the details and book it by number.",
     gal_hover: "Hover over a cut for the details and book it by number.",
     poster_t: "Ñapi cuts",
-    poster_s: "Order by number",
     ph: "photo coming",
     want: "I want no.",
     cut: "Cut",
@@ -785,6 +1006,22 @@ const T = {
     wa_cut: (n) => `Hi Ñapi, I'd like to book cut number ${n}`,
     title: "Ñapi Barber · Armenia & Auckland",
     loc: "en-NZ",
+    pol_1: "Hard part", pol_2: "Curly top", pol_3: "Beard",
+    ref_photo: "Reference photo",
+    pa_before: "Before", pa_after: "After",
+    pa_kick: "Scroll slowly, the clippers are working.",
+    pa_h: "One pass <br>and <em>done</em>.",
+    poster_s: "Reference styles · order by number",
+    proc_eye: "How booking works",
+    proc_h: "Three passes and <em>done</em>",
+    s1_t: "You text me", s1_p: "On WhatsApp, at +57 350 574 8769. Tell me what you want and when suits you.",
+    s2_t: "We set a time, you sit down", s2_p: "I confirm the time. You come in, sit down and, if you have a photo of the cut you want, show me.",
+    s3_t: "You check the mirror", s3_p: "Run a hand over the back of your neck and that's it. The new profile pic is on you.",
+    chat_out: "Hi Ñapi, I'd like to book a cut",
+    chat_in: "Sure thing! What day and time suits you?",
+    hi_from: { armenia: "Greetings from Quindío", auckland: "Greetings from Auckland" },
+    credits: "Reference photos:",
+    nav_how: "How to book",
   },
 };
 const CITY_NAME = { armenia: "Armenia", auckland: "Auckland" };
@@ -837,16 +1074,16 @@ function renderBoard() {
   const rows = CONFIG.services.map((svc) => {
     const [name, desc] = t.s[svc.id];
     const p = fmtPrice(svc, cur), po = fmtPrice(svc, other);
-    return `<div class="row">
-      <div class="row-top"><span class="row-name">${esc(name)}</span><span class="dots" aria-hidden="true"></span><span class="row-price ${p ? "" : "tbd"}" ${p ? "" : `title="${t.tbd}"`}>${p || "$ —"}</span></div>
+    return `<div class="row" data-img="${SVC_IMG[svc.id]}">
+      <div class="row-top"><img class="row-thumb" src="${SVC_IMG[svc.id]}" alt="" width="600" height="600" loading="lazy" decoding="async"><span class="row-name">${esc(name)}</span><span class="dots" aria-hidden="true"></span><span class="row-price ${p ? "" : "tbd"}" ${p ? "" : `title="${t.tbd}"`}>${p || "$ —"}</span></div>
       <div class="row-sub"><p class="row-desc">${esc(desc)}</p>
         <div class="row-meta"><span class="row-other">${t.in_city(CITY_NAME[otherCity])}: ${po || "$ —"} ${other.toUpperCase()}</span>
         <a class="btn btn-ink" href="${waLink(t.wa_service(name, CITY_NAME[state.city]))}" target="_blank" rel="noopener">${WA_SVG}<span>${t.book}</span></a></div></div>
     </div>`;
   });
   const [oName, oDesc] = t.s.otro;
-  rows.push(`<div class="row">
-    <div class="row-top"><span class="row-name">${esc(oName)}</span></div>
+  rows.push(`<div class="row" data-img="${SVC_IMG.otro}">
+    <div class="row-top"><img class="row-thumb" src="${SVC_IMG.otro}" alt="" width="600" height="600" loading="lazy" decoding="async"><span class="row-name">${esc(oName)}</span></div>
     <div class="row-sub"><p class="row-desc">${esc(oDesc)}</p>
       <div class="row-meta"><a class="btn btn-line" href="${waLink(t.wa_ask)}" target="_blank" rel="noopener">${WA_SVG}<span>${t.ask}</span></a></div></div>
   </div>`);
@@ -863,7 +1100,7 @@ function renderCuts() {
       ? `<img src="${esc(c.src)}" alt="${esc(name.replace(/[\[\]]/g, ""))}" loading="lazy" decoding="async">`
       : `<div class="cut-ph"><svg viewBox="0 0 200 220" aria-hidden="true"><use href="#ico-head"/></svg><em>${t.ph}</em></div>`;
     return `<div class="cut rv" role="button" tabindex="0" aria-expanded="false" style="--d:${(i % 3) * 0.07}s" aria-label="${t.cut} ${n}">
-      <div class="cut-frame">${media}<span class="cut-num" aria-hidden="true">${n}</span>
+      <div class="cut-frame">${media}<span class="cut-num" aria-hidden="true">${n}</span>${c.src && c.stock ? `<span class="chip-ref">${t.ref_photo}</span>` : ""}
         <div class="cut-info"><p>${phWrap(detail)}</p>
           <a class="btn btn-red" href="${waLink(t.wa_cut(n))}" target="_blank" rel="noopener" tabindex="-1">${WA_SVG}<span>${t.want} ${n}</span></a></div></div>
       <span class="cut-name">${phWrap(name)}</span>
@@ -905,7 +1142,12 @@ function renderPlaces() {
     const c = CONFIG.cities[id], q = partsIn(c.tz);
     const mapsHref = c.maps || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Ñapi Barber " + (id === "armenia" ? "Armenia Quindío" : "Auckland"))}`;
     const hours = t.days.map((d, k) => `<div class="${k === q.wd ? "today" : ""}"><span>${d}</span><span>${c.hours[k] ? esc(c.hours[k]) : t.tbd}</span></div>`).join("");
+    const postal = id === "armenia"
+      ? { src: "img/postal-quindio.webp", w: 1024, h: 683, alt: "Palmas de cera en el Valle de Cocora, Quindío", credit: `<a class="postal-credit" href="https://www.flickr.com/photos/mckaysavage/8806558224" target="_blank" rel="noopener">Valle de Cocora · McKay Savage, CC BY 2.0</a>` }
+      : { src: "img/postal-auckland.webp", w: 1600, h: 1067, alt: "Skyline de Auckland con la Sky Tower reflejada en el agua", credit: `<span class="postal-credit">Unsplash</span>` };
     return `<article class="place rv" style="--d:${i * 0.1}s">
+      <div class="postal"><img src="${postal.src}" alt="${postal.alt}" width="${postal.w}" height="${postal.h}" loading="lazy" decoding="async">
+        <span class="postal-hi">${t.hi_from[id]}</span><span class="postal-stamp" aria-hidden="true"><span>${id === "armenia" ? "COL" : "NZ"}</span></span>${postal.credit}</div>
       <span class="place-tag ${i ? "other" : ""}">${i ? t.there : t.here}</span>
       <div class="place-top">
         <div class="clock" data-clock="${id}" aria-hidden="true"><b>ÑAPI</b><span class="hand h"></span><span class="hand m"></span><span class="hand s"></span><i></i></div>
@@ -987,6 +1229,7 @@ function applyLang() {
 }
 function renderAll() {
   renderBoard(); renderCuts(); renderPlaces();
+  if (typeof scrollFx !== "undefined") scrollFx.reset();
   setSeg($("#seg-city"), "city", state.city);
   observeReveals(); bindCuts(); rowsOnTouch();
 }
@@ -1101,9 +1344,20 @@ async function introShave() {
   $(".blade-bar").classList.remove("anim-buzz");
   hair.style.display = "none";
   d.classList.add("intro-done");
+  dropPols();
   await dropTilde(60);
   $("#callout").classList.add("on");
   setTimeout(() => { blade.remove(); hair.remove(); box.replaceChildren(); }, 1800);
+}
+function dropPols() {
+  $$(".pol").forEach((el, i) => {
+    const r = getComputedStyle(el).getPropertyValue("--r").trim() || "0deg";
+    el.animate([
+      { opacity: 0, transform: `translate3d(${(i - 1) * 30}px, -140px, 0) rotate(${i % 2 ? 24 : -24}deg)` },
+      { opacity: 1, transform: `translate3d(0, 8px, 0) rotate(${r})`, offset: .7 },
+      { opacity: 1, transform: `rotate(${r})` },
+    ], { duration: 900, delay: 700 + i * 140, easing: "cubic-bezier(.3,.1,.3,1)", fill: "both" });
+  });
 }
 function wiggleTilde() {
   $("#tilde").animate([
@@ -1112,12 +1366,90 @@ function wiggleTilde() {
 }
 
 /* ---------- Scroll: barra compacta, el letrero se abre, cenefa con inercia ---------- */
+/* ---------- La pasada grande, el riel del proceso y la barra de progreso ---------- */
+const scrollFx = (() => {
+  const prog = $("#prog"), pas = $("#pasada"), win = $("#pa-win"), winIn = $("#pa-win-in"), blade = $("#pa-blade");
+  const track = $("#track"), fill = $("#rail-fill"), clip = $("#rail-clip"), steps = $$(".step"), pars = $$("[data-par]");
+  let geo = null, chatPlayed = false;
+  const measure = () => {
+    const sy = scrollY;
+    const r = (el) => { const b = el.getBoundingClientRect(); return { top: b.top + sy, h: el.offsetHeight }; };
+    geo = { vh: innerHeight, doc: document.documentElement.scrollHeight, pas: r(pas), track: r(track),
+      steps: steps.map((s) => s.offsetTop), pars: pars.map((im) => r(im.parentElement)) };
+  };
+  const clamp = (v) => Math.max(0, Math.min(1, v));
+  function update() {
+    if (!geo) measure();
+    const y = scrollY, vh = geo.vh;
+    prog.style.transform = `translate3d(${(clamp(y / (geo.doc - vh)) - 1) * 100}%, 0, 0)`;
+    if (reduce) return;
+    // La pasada: la cuchilla sube y deja el color
+    const pp = clamp((y - geo.pas.top) / (geo.pas.h - vh) / .82);
+    const off = (1 - pp) * vh;
+    win.style.transform = `translate3d(0, ${off}px, 0)`;
+    winIn.style.transform = `translate3d(0, ${-off}px, 0)`;
+    blade.style.transform = `translate3d(0, ${off}px, 0)`;
+    blade.style.opacity = pp >= 1 ? "0" : "1";
+    // El riel: la máquina baja con el scroll
+    const tp = clamp((y + vh * .55 - geo.track.top) / geo.track.h);
+    const px = tp * geo.track.h;
+    clip.style.transform = `translate3d(0, ${px - 38}px, 0)`;
+    fill.style.clipPath = `inset(0 0 ${(1 - tp) * 100}% 0)`;
+    steps.forEach((st, i) => {
+      const hit = px >= geo.steps[i];
+      if (hit !== st.classList.contains("hit")) st.classList.toggle("hit", hit);
+      if (hit && i === 0 && !chatPlayed) { chatPlayed = true; playChat(); }
+    });
+    // Fotos del proceso: parallax corto dentro de su marco
+    pars.forEach((im, i) => {
+      const g = geo.pars[i], c = (y + vh / 2 - (g.top + g.h / 2)) / vh;
+      if (Math.abs(c) < 1.2) im.style.transform = `translate3d(0, ${(-c * 6 - 6).toFixed(2)}%, 0)`;
+    });
+  }
+  addEventListener("resize", () => { geo = null; });
+  addEventListener("load", () => { geo = null; update(); });
+  return { update, reset: () => { geo = null; }, chat: () => chatPlayed };
+})();
+function playChat() {
+  const out = $("#bub-out"), typing = $("#typing"), inb = $("#bub-in");
+  if (reduce) { [out, inb].forEach((b) => b.classList.add("on", "read")); return; }
+  setTimeout(() => out.classList.add("on"), 200);
+  setTimeout(() => out.classList.add("read"), 1000);
+  setTimeout(() => typing.classList.add("on"), 1300);
+  setTimeout(() => { typing.classList.remove("on"); typing.style.display = "none"; inb.classList.add("on"); }, 2500);
+}
+
+/* ---------- Precios: la foto sigue al cursor ---------- */
+function peekSetup() {
+  if (!fine || reduce) return;
+  const board = $("#board"), peek = $("#peek"), img = $("#peek-img");
+  let tx = 0, ty = 0, x = 0, y = 0, raf = 0, on = false, cur = "";
+  const loop = () => {
+    x += (tx - x) * .16; y += (ty - y) * .16;
+    const rot = Math.max(-8, Math.min(8, (tx - x) * .08));
+    peek.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rot - 3}deg)`;
+    if (on || Math.abs(tx - x) > .5) raf = requestAnimationFrame(loop); else raf = 0;
+  };
+  board.addEventListener("pointermove", (e) => {
+    const row = e.target.closest(".row[data-img]");
+    const b = board.getBoundingClientRect();
+    tx = e.clientX - b.left + 26; ty = e.clientY - b.top - 140;
+    if (row) {
+      if (row.dataset.img !== cur) { cur = row.dataset.img; img.src = cur; }
+      if (!on) { on = true; peek.classList.add("on"); if (!x) { x = tx; y = ty; } }
+    } else if (on) { on = false; peek.classList.remove("on"); }
+    if (!raf) raf = requestAnimationFrame(loop);
+  });
+  board.addEventListener("pointerleave", () => { on = false; peek.classList.remove("on"); });
+}
+
 function onScrollSetup() {
   const bar = $("#bar"), letters = $$("#h1 .L"), skew = $(".cen-skew"), hero = $("#hero");
   let lastY = scrollY, k = 0, ticking = false;
   function frame() {
     const y = scrollY, vel = y - lastY; lastY = y;
     bar.classList.toggle("compact", y > 40);
+    scrollFx.update();
     const hh = hero.offsetHeight;
     if (!reduce && y < hh * 1.1) {
       const p = y / hh;
@@ -1207,7 +1539,8 @@ function buttonFeedback() {
   addEventListener("resize", () => { fitSign(); setSeg($("#seg-lang"), "lang", state.lang); setSeg($("#seg-city"), "city", state.city); });
   if (document.fonts) document.fonts.ready.then(() => { fitSign(); setSeg($("#seg-lang"), "lang", state.lang); setSeg($("#seg-city"), "city", state.city); renderCenefa(); });
 
-  onScrollSetup(); pauseOffscreen(); footBeat(); buttonFeedback();
+  onScrollSetup(); pauseOffscreen(); footBeat(); buttonFeedback(); peekSetup();
+  if (document.fonts) document.fonts.ready.then(() => { scrollFx.reset(); scrollFx.update(); });
 
   if (document.documentElement.classList.contains("intro")) {
     scrollTo(0, 0);

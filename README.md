@@ -11,7 +11,9 @@ Todo está en el bloque `CONFIG` al inicio del `<script>` de `index.html`:
 - `services`: precios en COP y NZD (`cop: 25000, nzd: 35`).
 - `cities.armenia` / `cities.auckland`: dirección, enlace de Google Maps y horario (lunes a domingo).
 - `instagram`: usuario sin @.
-- `cuts`: fotos, nombres y detalles de los cortes (ver `fotos/LEEME.md`).
+- `cuts`: el catálogo usa hoy **fotos de referencia** (Unsplash) con la etiqueta "Foto de referencia". Cuando haya fotos propias, cámbialas y pon `stock: false` (ver `fotos/LEEME.md`).
+
+Las fotos de `img/` son de referencia: Unsplash (licencia libre) y el Valle de Cocora de McKay Savage (CC BY 2.0, crédito en el pie). Lo ideal es reemplazarlas por fotos reales de Ñapi.
 
 Lo que siga en `null` o entre corchetes se ve en la página como "por confirmar" o subrayado punteado.
 
