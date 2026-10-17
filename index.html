@@ -1,0 +1,1220 @@
+<!doctype html>
+<html lang="es">
+<head>
+<!-- Diseño y desarrollo: editorial-ui, skill de Cristian Pérez · https://cristianperez.me -->
+<meta name="generator" content="editorial-ui · Cristian Pérez (https://cristianperez.me)">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ñapi Barber · Armenia y Auckland</title>
+<meta name="description" content="Ñapi Barber: corte, barba y corte + barba en Armenia (Quindío, Colombia) y en Auckland (Nueva Zelanda). Mira los cortes, los precios y agenda por WhatsApp.">
+<meta name="theme-color" content="#CFE2D8">
+<meta property="og:title" content="Ñapi Barber · Armenia y Auckland">
+<meta property="og:description" content="Corte, barba y corte + barba. Se agenda por WhatsApp.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23CFE2D8'/%3E%3Cpath d='M14 19c8-9 16-9 21-3s13 6 17-3' fill='none' stroke='%2313201B' stroke-width='6' stroke-linecap='round'/%3E%3Cpath d='M17 57V28h9l11 16V28h9v29h-9L26 41v16z' fill='%23C62F23'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Permanent+Marker&display=swap" rel="stylesheet">
+<script>
+  /* editorial-ui · Cristian Pérez · cristianperez.me */
+  (function () {
+    var d = document.documentElement;
+    d.classList.add("js");
+    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce) d.classList.add("intro");
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    // Red de seguridad: si algo falla, a los 6 s todo se ve.
+    setTimeout(function () { d.classList.add("safe", "intro-done"); }, 6000);
+  })();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BarberShop",
+  "name": "Ñapi Barber",
+  "telephone": "+57 350 5748769",
+  "areaServed": ["Armenia, Quindío, Colombia", "Auckland, New Zealand"],
+  "location": [
+    { "@type": "Place", "name": "Ñapi Barber Armenia", "address": { "@type": "PostalAddress", "addressLocality": "Armenia", "addressRegion": "Quindío", "addressCountry": "CO" } },
+    { "@type": "Place", "name": "Ñapi Barber Auckland", "address": { "@type": "PostalAddress", "addressLocality": "Auckland", "addressCountry": "NZ" } }
+  ]
+}
+</script>
+<style>
+/* editorial-ui · Cristian Pérez · cristianperez.me */
+:root {
+  --wall: #CFE2D8;
+  --wall-2: #BBD4C8;
+  --ink: #13201B;
+  --mute: rgba(19, 32, 27, .7);
+  --faint: rgba(19, 32, 27, .45);
+  --line: rgba(19, 32, 27, .16);
+  --red: #C62F23;
+  --red-2: #A8251B;
+  --cream: #FBF6EC;
+  --paper: #F3EBDC;
+  --tile: #EEF2EE;
+  --grout: #C3D1CA;
+
+  --fd: "Bungee", "Arial Black", Impact, sans-serif;
+  --ft: "Bricolage Grotesque", ui-sans-serif, sans-serif;
+  --fm: "Permanent Marker", "Comic Sans MS", cursive;
+
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --ease-io: cubic-bezier(.65, 0, .35, 1);
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
+
+  /* Elevación: reposo, levantado, flotante (sombra teñida de verde) */
+  --sh-1: 0 1px 2px rgba(19,32,27,.16), 0 3px 10px rgba(19,32,27,.10);
+  --sh-2: 0 8px 22px rgba(19,32,27,.18), 0 2px 6px rgba(19,32,27,.12);
+  --sh-3: 0 22px 54px rgba(19,32,27,.26), 0 6px 14px rgba(19,32,27,.14);
+
+  --gut: 16px;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+@media (min-width: 768px) { :root { --gut: 32px; } }
+@media (min-width: 1200px) { :root { --gut: 56px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  background: var(--wall); color: var(--ink);
+  -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent;
+  overflow-x: clip; scrollbar-gutter: stable; scroll-behavior: smooth;
+}
+body {
+  margin: 0; background: var(--wall); font-family: var(--ft); font-size: 17px; line-height: 1.55;
+  overflow-x: clip; -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a, button, [role="button"] { touch-action: manipulation; }
+.sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; border-radius: 6px; }
+
+/* Grano de pared pintada: base casi invisible */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .07 0 0 0 0 .12 0 0 0 0 .1 0 0 0 .14 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  will-change: transform;
+}
+main, header, footer { position: relative; z-index: 1; }
+
+.ph { text-decoration: underline dashed; text-decoration-color: var(--red); text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
+
+/* ---------- Botones ---------- */
+.btn {
+  --sweep: var(--ink); --sweep-ink: var(--cream);
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: .6em;
+  min-height: 54px; padding: 0 1.4em; border-radius: 999px;
+  font-family: var(--ft); font-weight: 700; font-size: 17px; text-decoration: none; white-space: nowrap;
+  transition: transform .45s var(--spring), color .3s var(--ease), box-shadow .3s var(--ease);
+  user-select: none;
+}
+.btn::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; background: var(--sweep);
+  clip-path: inset(0 100% 0 0 round 999px); transition: clip-path .5s var(--ease-io);
+}
+.btn svg { width: 22px; height: 22px; flex-shrink: 0; transition: transform .45s var(--spring); }
+.btn:active { transform: scale(.95); transition-duration: .12s; }
+.btn-red { background: var(--red); color: var(--cream); box-shadow: 0 4px 0 var(--red-2), var(--sh-2); }
+.btn-red:active { box-shadow: 0 1px 0 var(--red-2), var(--sh-1); }
+.btn-ink { background: var(--ink); color: var(--cream); --sweep: var(--red); --sweep-ink: var(--cream); }
+.btn-line { color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { transform: translateY(-3px); color: var(--sweep-ink); }
+  .btn:hover::before { clip-path: inset(0 0 0 0 round 999px); }
+  .btn:hover svg.wa { transform: rotate(-12deg) scale(1.06); }
+}
+.ripple-box { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; pointer-events: none; z-index: 0; }
+.ripple { position: absolute; border-radius: 50%; background: currentColor; opacity: .26; transform: scale(0); animation: rip .65s var(--ease) forwards; }
+@keyframes rip { to { transform: scale(1); opacity: 0; } }
+
+/* ---------- Header ---------- */
+.bar {
+  position: fixed; inset: 0 0 auto 0; z-index: 40;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  height: 66px; padding: env(safe-area-inset-top, 0px) var(--gut) 0;
+  transition: background-color .35s var(--ease), box-shadow .35s var(--ease), height .35s var(--ease), opacity .6s var(--ease);
+}
+.bar.compact { background: var(--wall); box-shadow: 0 1px 0 var(--line), var(--sh-1); height: 58px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; min-height: 44px; }
+.logo-mark { position: relative; width: 36px; height: 44px; flex-shrink: 0; }
+.logo-mark b { position: absolute; left: 0; right: 0; bottom: 0; font: 400 32px/1 var(--fd); text-align: center; color: var(--red); text-shadow: 2px 2px 0 var(--ink); }
+.logo-mark svg { position: absolute; left: 3px; top: 2px; width: 30px; height: 11px; color: var(--ink); }
+.logo-word { font: 400 17px/1 var(--fd); display: none; }
+@media (min-width: 720px) { .logo-word { display: inline; } }
+.bar-right { display: flex; align-items: center; gap: 8px; }
+.seg { position: relative; display: inline-flex; padding: 3px; border-radius: 999px; box-shadow: inset 0 0 0 2px var(--ink); background: rgba(207,226,216,.7); }
+.seg button {
+  position: relative; z-index: 1; min-height: 38px; padding: 0 12px; border-radius: 999px;
+  font-weight: 700; font-size: 14.5px; color: var(--ink); white-space: nowrap; transition: color .25s var(--ease);
+}
+.seg button::after { content: ""; position: absolute; inset: -4px 0; }
+.seg button[aria-pressed="true"] { color: var(--cream); }
+.seg .pill {
+  position: absolute; z-index: 0; top: 3px; bottom: 3px; left: 3px; width: 0; border-radius: 999px; background: var(--ink);
+  transition: transform .42s var(--spring), width .42s var(--ease);
+}
+@media (max-width: 379px) { .seg button { padding: 0 9px; font-size: 14px; } .bar-right { gap: 6px; } }
+
+/* ---------- Hero: la pared de la barbería ---------- */
+.hero {
+  position: relative; min-height: 100svh; overflow: hidden; display: flex; flex-direction: column;
+  padding: calc(92px + env(safe-area-inset-top, 0px)) var(--gut) 0;
+}
+.wall-in { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.sign-wrap { position: relative; }
+.sign {
+  margin: 0; font-family: var(--fd); font-weight: 400; font-size: 30vw; line-height: .86;
+  color: var(--red); text-shadow: .045em .045em 0 var(--ink); white-space: nowrap;
+  display: flex; padding-top: .3em;
+}
+.sign .L { display: inline-block; position: relative; will-change: transform; }
+.tilde { position: absolute; left: 6%; right: 2%; top: -.26em; height: .22em; color: var(--ink); transform-origin: 50% 85%; }
+.tilde svg { width: 100%; height: 100%; overflow: visible; }
+.tilde-hit { position: absolute; inset: -.06em -.04em; border-radius: 12px; cursor: pointer; }
+.callout {
+  position: absolute; left: 86%; top: -62%; display: flex; align-items: flex-end; gap: 2px;
+  font-family: var(--fm); font-size: max(17px, .13em); line-height: 1; color: var(--ink); text-shadow: none; white-space: nowrap;
+  transform: rotate(-6deg); margin-left: .02em; pointer-events: none;
+}
+.callout svg { width: 1.9em; height: 1.4em; flex-shrink: 0; transform: translateY(.35em); }
+.sign-line {
+  margin: clamp(14px, 2.4svh, 26px) 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px;
+  font: 400 clamp(15px, 1.8vw, 22px)/1.1 var(--fd); color: var(--ink); letter-spacing: .02em;
+}
+.sign-line i { width: 30px; height: 4px; background: var(--red); border-radius: 2px; }
+
+.mirror-row { display: grid; margin-top: clamp(26px, 4svh, 46px); padding-bottom: clamp(30px, 5svh, 60px); position: relative; z-index: 2; }
+.mirror {
+  position: relative; border-radius: 26px; padding: 24px 22px 46px; overflow: hidden;
+  background: linear-gradient(158deg, #F1F7F4 0%, #D3E3DC 38%, #EAF2EE 52%, #C5D9D0 100%);
+  box-shadow: 0 0 0 7px var(--ink), 0 0 0 9px #8EA89B, var(--sh-3);
+}
+.mirror::before {
+  content: ""; position: absolute; inset: -20%; pointer-events: none;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.55) 38%, transparent 46%, transparent 58%, rgba(255,255,255,.35) 62%, transparent 68%);
+}
+.note { position: relative; margin: 0; font: 400 clamp(25px, 2.7vw, 36px)/1.25 var(--fm); color: var(--ink); }
+.note span { display: block; }
+.note .red { color: var(--red); }
+.note-l2 { transform: rotate(-1.5deg); margin-top: 8px; }
+.note-arrow { position: absolute; right: 18px; bottom: 8px; width: 64px; height: 46px; color: var(--red); }
+.cta-col { display: grid; gap: 14px; margin-top: -27px; padding: 0 12px; position: relative; z-index: 3; }
+.cta-col .btn { width: 100%; }
+.cta-note { margin: 0; text-align: center; color: var(--mute); font-size: 15.5px; font-weight: 600; }
+@media (min-width: 900px) {
+  .wall-in { align-items: center; text-align: center; }
+  .sign-wrap { width: 100%; }
+  .sign { justify-content: center; }
+  .callout { top: -48%; font-size: max(17px, .1em); }
+  .sign-line { justify-content: center; }
+  .mirror-row { width: min(100%, 860px); }
+  .cta-col { justify-items: center; }
+  .cta-col .btn { width: auto; min-width: 340px; }
+  .mirror { padding: 28px 110px 44px; text-align: center; }
+  .zocalo { height: 64px; }
+  .note-arrow { right: auto; left: calc(50% + 250px); bottom: 4px; transform: scaleX(-1); }
+}
+/* Zócalo de baldosa */
+.zocalo {
+  position: relative; z-index: 1; margin: 0 calc(-1 * var(--gut)); height: clamp(64px, 10svh, 110px);
+  border-top: 8px solid var(--ink);
+  background:
+    linear-gradient(var(--grout) 2px, transparent 2px) 0 0 / 40px 40px,
+    linear-gradient(90deg, var(--grout) 2px, transparent 2px) 0 0 / 40px 40px,
+    linear-gradient(rgba(19,32,27,.07), transparent 60%),
+    var(--tile);
+}
+
+/* La capa de pelo y la máquina (el momento estrella) */
+.hair { position: absolute; inset: 0; z-index: 5; overflow: hidden; display: none; }
+.intro .hair { display: block; }
+.hair-in { position: absolute; inset: 0; background: #1B1511; }
+.hair canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.blade { position: absolute; left: 0; right: 0; top: 0; z-index: 6; height: 0; pointer-events: none; display: none; }
+.intro .blade { display: block; transform: translate3d(0, 130vh, 0); }
+.blade-skin { position: absolute; left: 0; right: 0; top: 8px; height: 110px; background: linear-gradient(rgba(19,32,27,.16), rgba(19,32,27,0)); }
+.blade-bar { position: absolute; left: -2%; right: -2%; top: -12px; height: 22px; }
+.blade-bar::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 12px;
+  background: repeating-linear-gradient(90deg, #DCE3E0 0 3px, #8D9893 3px 4px, transparent 4px 8px);
+}
+.blade-bar::after { content: ""; position: absolute; left: 0; right: 0; top: 11px; height: 9px; background: linear-gradient(#E9EEEC, #9AA6A1); box-shadow: 0 3px 0 var(--ink); }
+.anim-buzz { animation: buzz .05s steps(2) infinite; }
+@keyframes buzz { 0% { transform: translate3d(-1.2px, 0, 0); } 100% { transform: translate3d(1.2px, .6px, 0); } }
+.blade-tag {
+  position: absolute; right: var(--gut); top: -56px; display: inline-flex; gap: 8px; align-items: center;
+  background: var(--cream); color: var(--ink); font-weight: 700; font-size: 14px; padding: 6px 12px; border-radius: 999px; box-shadow: var(--sh-2);
+}
+.strands { position: absolute; inset: 0; z-index: 7; pointer-events: none; overflow: hidden; }
+.strand { position: absolute; left: 0; top: 0; width: 2px; border-radius: 2px; background: #2B211A; will-change: transform, opacity; }
+
+/* Estado inicial del intro (solo con JS y sin movimiento reducido) */
+.intro .hero .after { opacity: 0; transform: translateY(26px); }
+.intro .tilde { opacity: 0; }
+.intro .callout { clip-path: inset(0 100% 0 0); }
+.intro .note span { clip-path: inset(0 100% 0 0); }
+.intro .note-arrow { clip-path: inset(0 100% 0 0); }
+.intro .bar, .intro .fab { opacity: 0; }
+.intro-done .hero .after { opacity: 1; transform: none; transition: opacity .8s var(--ease) var(--d, 0s), transform .9s var(--ease) var(--d, 0s); }
+.intro-done .note span { clip-path: inset(-10% -4% -10% 0); transition: clip-path .75s cubic-bezier(.5,0,.4,1) var(--d, 0s); }
+.intro-done .note-arrow { clip-path: inset(0 0 0 0); transition: clip-path .5s var(--ease) 1.5s; }
+.intro-done .bar, .intro-done .fab { opacity: 1; transition: opacity .6s var(--ease) .5s, background-color .35s var(--ease), box-shadow .35s var(--ease), height .35s var(--ease), transform .45s var(--spring); }
+.intro .callout.on { clip-path: inset(-20% -4% -20% 0); transition: clip-path .6s cubic-bezier(.5,0,.4,1); }
+.safe .tilde { opacity: 1; }
+.safe .callout, .safe .note span, .safe .note-arrow { clip-path: none !important; }
+.safe .hair, .safe .blade, .safe .strands { display: none !important; }
+
+/* ---------- Revelados ---------- */
+.js .rv { opacity: 0; transform: translateY(30px); transition: opacity .8s var(--ease) var(--d, 0s), transform .9s var(--ease) var(--d, 0s); }
+.js .rv.in, .safe .rv { opacity: 1; transform: none; }
+/* Títulos que se rapan: la cuchilla sube y deja ver la línea */
+.shave { position: relative; display: block; }
+.shave .txt { display: block; }
+.js .shave .txt { clip-path: inset(100% 0 0 0); transition: clip-path 1s var(--ease-io); }
+.shave::after {
+  content: ""; position: absolute; left: -4px; right: -4px; bottom: 0; height: 10px; opacity: 0; pointer-events: none;
+  background: repeating-linear-gradient(90deg, var(--ink) 0 3px, transparent 3px 7px) top / 100% 5px no-repeat, linear-gradient(var(--ink), var(--ink)) bottom / 100% 5px no-repeat;
+}
+.js .shave.in .txt, .safe .shave .txt { clip-path: inset(-12% -2% -12% -2%); }
+.js .shave.in::after { animation: bladeUp 1s var(--ease-io) forwards; }
+@keyframes bladeUp { 0% { opacity: 1; transform: translateY(0); } 90% { opacity: 1; } 100% { opacity: 0; transform: translateY(var(--h, -1.2em)); } }
+
+/* ---------- Secciones ---------- */
+.sec { position: relative; padding: clamp(70px, 10vw, 140px) var(--gut); }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 14px; font-weight: 700; font-size: 17px; color: rgba(19,32,27,.86); }
+.eyebrow::before { content: ""; width: 22px; height: 4px; border-radius: 2px; background: var(--red); }
+.h2 { margin: 0; font: 400 clamp(34px, 8.4vw, 100px)/1.08 var(--fd); color: var(--ink); max-width: 15ch; }
+.h2 em { font-style: normal; color: var(--red); }
+.lede { margin: 18px 0 0; max-width: 46ch; color: var(--mute); font-size: 17px; }
+
+/* Cenefa con palabras (marquee) */
+.cenefa { position: relative; z-index: 2; overflow: hidden; background: var(--red); color: var(--cream); border-top: 6px solid var(--ink); border-bottom: 6px solid var(--ink); }
+.cenefa::before, .cenefa::after { content: ""; position: absolute; left: 0; right: 0; height: 2px; background: var(--cream); opacity: .55; z-index: 1; }
+.cenefa::before { top: 7px; } .cenefa::after { bottom: 7px; }
+.cen-skew { will-change: transform; }
+.cen-track { display: flex; width: max-content; padding: 22px 0 20px; font: 400 clamp(24px, 3.8vw, 44px)/1 var(--fd); }
+.cen-track span { display: inline-flex; align-items: center; gap: .5em; padding-right: .5em; white-space: nowrap; }
+.cen-track svg { width: 1em; height: .34em; flex-shrink: 0; color: var(--ink); }
+.anim-marq { animation: marq var(--dur, 40s) linear infinite; }
+@keyframes marq { to { transform: translate3d(-50%, 0, 0); } }
+
+/* Lista de precios: tabla esmaltada */
+.board {
+  position: relative; margin-top: clamp(36px, 6vw, 64px); background: var(--cream); border-radius: 16px;
+  padding: 28px 18px 10px; box-shadow: 0 0 0 6px var(--ink), 0 12px 0 6px rgba(19,32,27,.12), var(--sh-3);
+  max-width: 1100px;
+}
+@media (min-width: 900px) { .board { padding: 40px 52px 18px; } }
+.screw { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #E8ECEA, #8E9993); box-shadow: inset 0 0 0 1px rgba(19,32,27,.3); }
+.screw::after { content: ""; position: absolute; left: 2px; right: 2px; top: 6px; height: 2px; background: rgba(19,32,27,.55); border-radius: 1px; }
+.screw.tl { top: 10px; left: 10px; } .screw.tr { top: 10px; right: 10px; } .screw.bl { bottom: 10px; left: 10px; } .screw.br { bottom: 10px; right: 10px; }
+.js .screw { transform: rotate(-260deg); transition: transform 1.3s var(--ease) .35s; }
+.board.in .screw, .safe .screw { transform: rotate(0deg); }
+.board-head { text-align: center; padding: 0 8px 18px; border-bottom: 3px solid var(--ink); }
+.board-head b { display: block; font: 400 clamp(34px, 6vw, 64px)/1 var(--fd); color: var(--red); text-shadow: .05em .05em 0 var(--ink); }
+.board-head span { display: block; margin-top: 10px; font-weight: 600; font-size: 15.5px; color: var(--mute); }
+.row { position: relative; isolation: isolate; padding: 18px 2px; border-bottom: 1.5px solid var(--line); }
+.row:last-child { border-bottom: 0; }
+.row::before {
+  content: ""; position: absolute; inset: 4px -10px; z-index: -1; border-radius: 10px; background: var(--wall);
+  transform: scaleX(0); transform-origin: 0 50%; transition: transform .5s var(--ease-io);
+}
+.row-top { display: flex; align-items: baseline; gap: 10px; }
+.row-name { font: 400 clamp(22px, 3.4vw, 40px)/1.12 var(--fd); flex-shrink: 0; max-width: 70%; transition: transform .45s var(--ease); }
+.dots { flex: 1; min-width: 24px; border-bottom: 3px dotted rgba(19,32,27,.4); transform: translateY(-.3em); }
+.row-price { font: 400 clamp(22px, 3.4vw, 40px)/1.12 var(--fd); color: var(--red); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.row-price.tbd { color: var(--faint); }
+.row-sub { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin-top: 8px; }
+.row-desc { margin: 0; flex: 1 1 260px; max-width: 52ch; color: var(--mute); font-size: 16px; }
+.row-meta { display: flex; align-items: center; gap: 14px; margin-left: auto; }
+.row-other { font-size: 14px; color: var(--faint); }
+.row .btn { min-height: 46px; font-size: 15.5px; padding: 0 1.1em; }
+.row .btn svg { width: 19px; height: 19px; }
+.row.lit::before { transform: scaleX(1); }
+.row.lit .row-name { transform: translateX(8px); }
+@media (hover: hover) and (pointer: fine) {
+  .row:hover::before { transform: scaleX(1); }
+  .row:hover .row-name { transform: translateX(8px); }
+}
+
+/* Catálogo de cortes: el afiche */
+.sec-poster { background: var(--wall-2); }
+.poster {
+  position: relative; margin-top: clamp(36px, 6vw, 64px); background: var(--paper); border-radius: 6px;
+  padding: 0 14px 18px; box-shadow: var(--sh-3); transform: rotate(-.5deg); max-width: 1040px;
+}
+.poster::before, .poster::after { content: ""; position: absolute; top: -12px; width: 92px; height: 26px; background: rgba(251,246,236,.78); box-shadow: 0 1px 2px rgba(19,32,27,.15); z-index: 2; }
+.poster::before { left: 20px; transform: rotate(-5deg); } .poster::after { right: 20px; transform: rotate(4deg); }
+@media (min-width: 900px) { .poster { padding: 0 32px 32px; } }
+.poster-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin: 0 -14px 18px; padding: 20px 14px 16px; background: var(--red); color: var(--cream); border-radius: 6px 6px 0 0; }
+@media (min-width: 900px) { .poster-head { margin: 0 -32px 28px; padding: 24px 32px 20px; } }
+.poster-head b { font: 400 clamp(28px, 5vw, 54px)/1.05 var(--fd); text-shadow: .05em .05em 0 var(--ink); }
+.poster-head span { font-weight: 700; font-size: 15.5px; }
+.cuts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; }
+@media (min-width: 900px) { .cuts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 26px; } }
+.cut { position: relative; display: block; text-align: left; cursor: pointer; border-radius: 10px; }
+.cut-frame {
+  position: relative; aspect-ratio: 4 / 5; border-radius: 10px; overflow: hidden; clip-path: inset(0 round 10px);
+  background: #E7DECC; box-shadow: inset 0 0 0 2px rgba(19,32,27,.12); isolation: isolate;
+  transition: transform .5s var(--spring);
+}
+.cut img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.cut-ph { position: absolute; inset: 0; display: grid; place-items: end center; }
+.cut-ph svg { width: 76%; height: auto; color: rgba(19,32,27,.17); }
+.cut-ph em { position: absolute; top: 46%; left: 50%; transform: translate(-50%, -50%) rotate(-4deg); font: 400 15px/1.1 var(--fm); font-style: normal; color: rgba(19,32,27,.62); white-space: nowrap; }
+.cut-num {
+  position: absolute; top: 10px; left: 10px; z-index: 2; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--red); color: var(--cream); font: 400 16px/1 var(--fd); box-shadow: 0 2px 0 var(--ink);
+}
+.cut-name { display: block; margin-top: 10px; font: 400 clamp(14px, 1.7vw, 20px)/1.2 var(--fd); }
+.cut-info {
+  position: absolute; inset: auto 0 0 0; z-index: 3; padding: 16px 10px 10px; background: var(--ink); color: var(--cream);
+  clip-path: inset(100% 0 0 0); transition: clip-path .55s var(--ease-io);
+}
+.cut-info::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 6px;
+  background: repeating-linear-gradient(90deg, #DCE3E0 0 3px, transparent 3px 7px);
+  transform: translateY(var(--hh, 160px)); transition: transform .55s var(--ease-io);
+}
+.cut-info p { margin: 0 0 10px; font-size: 14px; line-height: 1.35; color: rgba(251,246,236,.82); }
+.cut-info .ph { text-decoration-color: #E9897F; }
+.cut-info .btn { width: 100%; min-height: 44px; font-size: 15px; padding: 0 .7em; gap: .45em; }
+.cut-info .btn svg { width: 18px; height: 18px; }
+@media (max-width: 400px) { .cut-info .btn { font-size: 14px; } .cut-info .btn svg { display: none; } }
+.cut.open .cut-info { clip-path: inset(0 0 0 0); }
+.cut.open .cut-info::before { transform: translateY(0); }
+.cut.open .cut-frame { transform: translateY(-4px); }
+@media (hover: hover) and (pointer: fine) {
+  .cut:hover .cut-info { clip-path: inset(0 0 0 0); }
+  .cut:hover .cut-info::before { transform: translateY(0); }
+  .cut:hover .cut-frame { transform: translateY(-4px); }
+  .cut:hover img { transform: scale(1.05); }
+}
+.hint { display: inline-flex; align-items: center; gap: 8px; margin: 18px 0 0; font-weight: 600; font-size: 15.5px; color: rgba(19,32,27,.82); }
+.hint svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+/* Relojes de pared: dos ciudades */
+.places { margin-top: clamp(36px, 6vw, 64px); display: grid; gap: 26px; }
+@media (min-width: 900px) { .places { grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; } }
+.place { position: relative; background: var(--cream); border-radius: 22px; padding: 24px 20px 22px; box-shadow: var(--sh-2); }
+@media (min-width: 900px) { .place { padding: 32px 30px 28px; } }
+.place-top { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+.place-top > div:last-child { min-width: 0; flex: 1 1 160px; }
+.clock { position: relative; flex-shrink: 0; width: 112px; aspect-ratio: 1; border-radius: 50%; background: #FFFDF8; box-shadow: 0 0 0 7px var(--ink), 0 0 0 9px #8EA89B, var(--sh-2); margin: 9px; }
+@media (min-width: 1200px) { .clock { width: 150px; } }
+.clock::before {
+  content: ""; position: absolute; inset: 7%; border-radius: 50%;
+  background: repeating-conic-gradient(from -1.5deg, var(--ink) 0 3deg, transparent 3deg 30deg);
+  -webkit-mask: radial-gradient(circle, transparent 82%, #000 83%); mask: radial-gradient(circle, transparent 82%, #000 83%);
+}
+.clock b { position: absolute; left: 0; right: 0; top: 70%; text-align: center; font: 400 10px/1 var(--fd); color: var(--red); letter-spacing: .06em; }
+.hand { position: absolute; left: 50%; bottom: 50%; transform-origin: 50% 100%; border-radius: 4px; background: var(--ink); }
+.hand.h { width: 5px; height: 25%; margin-left: -2.5px; }
+.hand.m { width: 3.5px; height: 36%; margin-left: -1.75px; }
+.hand.s { width: 2px; height: 40%; margin-left: -1px; background: var(--red); }
+.clock i { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--red); }
+.anim-sec { animation: sec 60s steps(60) infinite; }
+@keyframes sec { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.place-city { margin: 0; font: 400 clamp(26px, 4.4vw, 52px)/1.05 var(--fd); }
+.place-country { display: block; margin-top: 6px; font-weight: 600; font-size: 15px; color: var(--mute); }
+.place-time { display: block; margin-top: 10px; font-size: 15.5px; color: var(--mute); }
+.place-time b { color: var(--ink); font-weight: 800; font-variant-numeric: tabular-nums; }
+.place-tag { position: absolute; top: -12px; right: 18px; font: 400 13px/1 var(--fd); background: var(--red); color: var(--cream); padding: 8px 10px 7px; border-radius: 6px; transform: rotate(4deg); box-shadow: 0 2px 0 var(--ink); }
+.place-tag.other { background: var(--cream); color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+.addr { margin: 22px 0 14px; font-size: 17px; font-weight: 600; }
+.place .btn { width: 100%; }
+.place .btn svg.pin { width: 20px; height: 20px; }
+.hours { margin: 20px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 18px; font-size: 15px; }
+.hours h4 { grid-column: 1 / -1; margin: 0 0 6px; font-size: 15.5px; font-weight: 800; }
+.hours div { position: relative; display: flex; justify-content: space-between; gap: 8px; padding: 7px 0 7px 8px; border-bottom: 1px solid var(--line); min-width: 0; }
+.hours div span:first-child { font-weight: 700; }
+.hours div span:last-child { color: var(--mute); text-align: right; }
+.hours div.today::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 4px; border-radius: 2px; background: var(--red); }
+.hours div.today span:last-child { color: var(--ink); font-weight: 800; }
+.ocean { margin: clamp(28px, 4vw, 44px) 0 0; max-width: 52ch; font-size: 18px; color: var(--mute); }
+.ocean b { color: var(--ink); }
+
+/* Footer: el letrero de la puerta */
+.foot { position: relative; background: var(--ink); color: var(--cream); padding: clamp(46px, 6vw, 76px) var(--gut) calc(28px + var(--safe-b) + 80px); overflow: hidden; }
+@media (min-width: 900px) { .foot { padding-bottom: calc(34px + var(--safe-b)); } }
+.foot-kick { margin: 0 0 12px; text-align: center; font-weight: 700; font-size: 18px; color: rgba(251,246,236,.8); }
+.door { position: relative; display: grid; justify-items: center; }
+.nail { width: 16px; height: 16px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #E8ECEA, #6F7A75); box-shadow: 0 2px 0 rgba(0,0,0,.4); position: relative; z-index: 2; }
+.hang { position: relative; display: block; margin-top: -8px; text-decoration: none; transform-origin: 50% 0; width: min(100%, 980px); }
+.hang svg.cord { display: block; width: 70%; height: 66px; margin: 0 auto; color: #B9A98C; }
+.hang-board {
+  position: relative; display: block; margin-top: -2px; padding: clamp(24px, 3.4vw, 40px) clamp(20px, 4vw, 56px);
+  background: var(--cream); color: var(--red); border-radius: 14px; text-align: center;
+  box-shadow: inset 0 0 0 5px var(--red), inset 0 0 0 9px var(--cream), 0 24px 50px rgba(0,0,0,.45);
+}
+.hang-board b { display: block; font: 400 clamp(34px, 9vw, 116px)/1.08 var(--fd); text-shadow: .05em .05em 0 var(--ink); }
+.hang-board small { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; font: 700 16px/1.2 var(--ft); color: var(--ink); }
+.hang-board small svg { width: 20px; height: 20px; flex-shrink: 0; }
+.hang-board::before, .hang-board::after { content: ""; position: absolute; top: 16px; width: 10px; height: 10px; border-radius: 50%; background: var(--ink); }
+.hang-board::before { left: 18px; } .hang-board::after { right: 18px; }
+.foot-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 26px; margin-top: clamp(44px, 6vw, 70px); padding-top: 20px; border-top: 1px solid rgba(251,246,236,.16); }
+.foot-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 700; font-size: 17px; text-decoration: none; }
+.foot-links a svg { width: 20px; height: 20px; flex-shrink: 0; }
+.foot-links a span { background: linear-gradient(currentColor, currentColor) 0 100% / 0% 2px no-repeat; transition: background-size .4s var(--ease); }
+@media (hover: hover) and (pointer: fine) { .foot-links a:hover span { background-size: 100% 2px; } }
+.foot-links .ph { text-decoration-color: #E9897F; }
+.foot-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 20px; margin-top: 14px; font-size: 13px; color: rgba(251,246,236,.5); text-align: center; }
+.foot-meta a { color: rgba(251,246,236,.66); text-decoration: underline; text-decoration-color: rgba(251,246,236,.3); text-underline-offset: 3px; padding: 14px 0; display: inline-block; }
+@media (hover: hover) and (pointer: fine) { .foot-meta a:hover { color: var(--cream); text-decoration-color: currentColor; } }
+
+/* Botón fijo de WhatsApp */
+.fab { position: fixed; z-index: 50; right: var(--gut); bottom: calc(16px + var(--safe-b)); min-height: 58px; padding: 0 22px 0 18px; box-shadow: 0 4px 0 var(--red-2), var(--sh-3); }
+.fab svg { width: 26px; height: 26px; }
+.anim-nudge { animation: nudge 7s var(--ease) infinite 3s; }
+@keyframes nudge { 0%, 88%, 100% { transform: rotate(0); } 91% { transform: rotate(-14deg); } 94% { transform: rotate(10deg); } 97% { transform: rotate(-5deg); } }
+
+.is-paused, .is-paused * { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [class*="anim-"] { animation: none !important; }
+  .js .rv { opacity: 1; transform: none; transition: none; }
+  .js .shave .txt { clip-path: none; transition: none; }
+  .shave::after { display: none; }
+  .js .screw { transform: none; }
+  .btn, .cut-frame, .row::before, .row-name { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="bar" id="bar">
+  <a class="logo" href="#top" aria-label="Ñapi Barber, inicio">
+    <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 200 60"><use href="#tilde-shape"/></svg><b>N</b></span>
+    <span class="logo-word">Ñapi Barber</span>
+  </a>
+  <div class="bar-right">
+    <div class="seg" role="group" aria-label="Ciudad" data-i18n-aria="city_label" id="seg-city">
+      <span class="pill" aria-hidden="true"></span>
+      <button type="button" data-city="armenia" aria-pressed="true">Armenia</button>
+      <button type="button" data-city="auckland" aria-pressed="false">Auckland</button>
+    </div>
+    <div class="seg" role="group" aria-label="Idioma" data-i18n-aria="lang_label" id="seg-lang">
+      <span class="pill" aria-hidden="true"></span>
+      <button type="button" data-lang="es" aria-pressed="true" lang="es">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<!-- Formas reutilizadas: el mechón (virgulilla) e íconos -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="tilde-shape" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 46 C 34 6, 70 4, 100 30 S 166 56, 190 14" stroke-width="15"/>
+      <path d="M24 38 C 46 14, 72 14, 98 36 S 158 52, 180 26" stroke-width="2.6" stroke="#FBF6EC" opacity=".3"/>
+      <path d="M4 52 C 10 44, 14 38, 20 32" stroke-width="5"/>
+      <path d="M186 20 C 192 12, 196 8, 198 2" stroke-width="4"/>
+    </g>
+    <path id="ico-wa-p" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91A9.86 9.86 0 0 0 12.04 2Zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.2 8.2 0 0 1 8.23 8.24c0 4.54-3.7 8.23-8.23 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29Z"/>
+    <symbol id="ico-wa" viewBox="0 0 24 24"><use href="#ico-wa-p" fill="currentColor"/></symbol>
+    <symbol id="ico-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></symbol>
+    <symbol id="ico-head" viewBox="0 0 200 220"><path fill="currentColor" d="M100 18c-34 0-58 24-58 60 0 22 8 40 20 52v14c0 6-4 10-10 12l-30 10C8 172 0 186 0 200v20h200v-20c0-14-8-28-22-34l-30-10c-6-2-10-6-10-12v-14c12-12 20-30 20-52 0-36-24-60-58-60Z"/></symbol>
+  </defs>
+</svg>
+
+<main id="top">
+  <!-- HERO: la pared de la barbería -->
+  <section class="hero" id="hero" aria-labelledby="hero-title">
+    <div class="wall-in">
+      <div class="sign-wrap">
+        <h1 class="sr" id="hero-title">Ñapi Barber · barbería en Armenia y Auckland</h1>
+        <div class="sign" id="h1" aria-hidden="true">
+          <span class="L" aria-hidden="true">N<span class="tilde" id="tilde"><svg viewBox="0 0 200 60"><use href="#tilde-shape"/></svg><button class="tilde-hit" type="button" tabindex="-1" aria-hidden="true"></button></span><span class="callout" id="callout"><svg viewBox="0 0 60 44" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M56 6C40 4 18 10 8 34"/><path d="M4 22 8 35l12-6"/></svg><span data-i18n="callout">¡ahora sí!</span></span></span><span class="L" aria-hidden="true">A</span><span class="L" aria-hidden="true">P</span><span class="L" aria-hidden="true">I</span>
+        </div>
+      </div>
+      <p class="sign-line after" style="--d:.05s"><i aria-hidden="true"></i><span data-i18n="sign_line">Barbería · Armenia ⇄ Auckland</span></p>
+
+      <div class="mirror-row">
+        <div class="mirror after" style="--d:.12s">
+          <p class="note">
+            <span style="--d:.35s" data-i18n="note_1">Corte, barba o los dos.</span>
+            <span class="note-l2 red" style="--d:.9s" data-i18n="note_2">Tú pones la cabeza, yo pongo la máquina.</span>
+          </p>
+          <svg class="note-arrow" viewBox="0 0 64 46" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6c10 22 26 32 48 34"/><path d="M44 30l11 10-14 4"/></svg>
+        </div>
+        <div class="cta-col after" style="--d:.3s">
+          <a class="btn btn-red js-wa" href="https://wa.me/573505748769?text=Hola%20%C3%91api%2C%20quiero%20agendar%20un%20corte" target="_blank" rel="noopener">
+            <svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wa"/></svg><span data-i18n="cta">Agendar por WhatsApp</span>
+          </a>
+          <p class="cta-note" data-i18n="cta_note">Escribes, cuadramos la hora y listo.</p>
+        </div>
+      </div>
+    </div>
+    <div class="zocalo" aria-hidden="true"></div>
+
+    <!-- Capa de pelo + máquina: decorativas -->
+    <div class="hair" id="hair" aria-hidden="true"><div class="hair-in" id="hair-in"><canvas id="hair-c"></canvas></div></div>
+    <div class="blade" id="blade" aria-hidden="true">
+      <div class="blade-skin"></div>
+      <div class="blade-bar anim-buzz"></div>
+      <span class="blade-tag"><span data-i18n="blade">rapando…</span> #0</span>
+    </div>
+    <div class="strands" id="strands" aria-hidden="true"></div>
+  </section>
+
+  <!-- CENEFA -->
+  <div class="cenefa" aria-hidden="true" id="cenefa"><div class="cen-skew"><div class="cen-track anim-marq" id="cen-track"></div></div></div>
+
+  <!-- PRECIOS -->
+  <section class="sec" id="precios" aria-labelledby="h-precios">
+    <p class="eyebrow rv" data-i18n="serv_eye">Lista de precios</p>
+    <h2 class="h2 shave" id="h-precios"><span class="txt" data-i18n-html="serv_h">Lo que hay pa' esa <em>cabeza</em></span></h2>
+    <p class="lede rv" data-i18n="serv_p">Ves el precio de la ciudad que elegiste arriba. ¿Estás en la otra? Cámbiala y listo.</p>
+    <div class="board rv" id="board">
+      <span class="screw tl" aria-hidden="true"></span><span class="screw tr" aria-hidden="true"></span><span class="screw bl" aria-hidden="true"></span><span class="screw br" aria-hidden="true"></span>
+      <div class="board-head"><b data-i18n="board_t">Precios</b><span id="board-sub"></span></div>
+      <div id="rows"></div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO DE CORTES -->
+  <section class="sec sec-poster" id="cortes" aria-labelledby="h-cortes">
+    <p class="eyebrow rv" data-i18n="gal_eye">Catálogo de cortes</p>
+    <h2 class="h2 shave" id="h-cortes"><span class="txt" data-i18n-html="gal_h">Escoge tu <em>número</em></span></h2>
+    <p class="hint rv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5a2 2 0 1 1 4 0v5"/><path d="M13 10a2 2 0 1 1 4 0v1a2 2 0 1 1 4 0v3a7 7 0 0 1-7 7h-1.5a6 6 0 0 1-4.6-2.2L4.6 14.9a1.8 1.8 0 0 1 2.7-2.4L9 14"/></svg>
+      <span id="hint-txt">Toca un corte pa' ver el detalle y pedirlo por número.</span>
+    </p>
+    <div class="poster rv">
+      <div class="poster-head"><b data-i18n="poster_t">Cortes Ñapi</b><span data-i18n="poster_s">Pídelo por número</span></div>
+      <div class="cuts" id="cuts"></div>
+    </div>
+  </section>
+
+  <!-- CÓMO LLEGAR -->
+  <section class="sec" id="donde" aria-labelledby="h-donde">
+    <p class="eyebrow rv" data-i18n="donde_eye">Cómo llegar</p>
+    <h2 class="h2 shave" id="h-donde"><span class="txt" data-i18n-html="donde_h">Dos sillas, un océano en la <em>mitad</em></span></h2>
+    <div class="places" id="places"></div>
+    <p class="ocean rv" id="ocean"></p>
+  </section>
+</main>
+
+<!-- FOOTER: el letrero colgado en la puerta -->
+<footer class="foot" id="foot">
+  <p class="foot-kick" data-i18n="foot_kick">¿Y entonces?</p>
+  <div class="door">
+    <span class="nail" aria-hidden="true"></span>
+    <a class="hang js-wa" id="hang" href="https://wa.me/573505748769?text=Hola%20%C3%91api%2C%20quiero%20agendar%20un%20corte" target="_blank" rel="noopener">
+      <svg class="cord" viewBox="0 0 400 66" preserveAspectRatio="none" aria-hidden="true"><path d="M200 4 L60 64 M200 4 L340 64" stroke="currentColor" stroke-width="3" fill="none" vector-effect="non-scaling-stroke"/></svg>
+      <span class="hang-board">
+        <b data-i18n="foot_big">¿Te motilo o qué?</b>
+        <small><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wa"/></svg><span data-i18n="foot_small">Toca el letrero y me escribes.</span></small>
+      </span>
+    </a>
+  </div>
+  <nav class="foot-links" aria-label="Contacto">
+    <a class="js-wa" href="https://wa.me/573505748769" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wa"/></svg><span>WhatsApp +57 350 574 8769</span></a>
+    <a id="ig-link" href="https://www.instagram.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg><span id="ig-txt" class="ph">@[usuario]</span></a>
+    <a href="#precios"><span data-i18n="nav_prices">Precios</span></a>
+    <a href="#cortes"><span data-i18n="nav_cuts">Cortes</span></a>
+    <a href="#donde"><span data-i18n="nav_where">Cómo llegar</span></a>
+  </nav>
+  <div class="foot-meta">
+    <span>© <span id="yr">2026</span> Ñapi Barber · Armenia · Auckland</span>
+    <span><span data-i18n="credit">Motilado a mano por</span> <a href="https://cristianperez.me" target="_blank" rel="noopener">Cristian Pérez</a>⁠​‌​​​​‌‌​‌‌‌​​‌​​‌‌​‌​​‌​‌‌‌​​‌‌​‌‌‌​‌​​​‌‌​‌​​‌​‌‌​​​​‌​‌‌​‌‌‌​​​‌​​​​​​‌​‌​​​​‌‌​​​​‌‌‌​‌​‌​​‌​‌‌‌​​‌​​‌‌​​‌​‌​‌‌‌‌​‌​​​‌​​​​​‌‌​​​​‌​‌​‌‌​‌‌‌​​‌​​​​​​‌‌​‌​​​​‌‌‌​‌​​​‌‌‌​‌​​​‌‌‌​​​​​‌‌‌​​‌‌​​‌‌‌​‌​​​‌​‌‌‌‌​​‌​‌‌‌‌​‌‌​​​‌‌​‌‌‌​​‌​​‌‌​‌​​‌​‌‌‌​​‌‌​‌‌‌​‌​​​‌‌​‌​​‌​‌‌​​​​‌​‌‌​‌‌‌​​‌‌‌​​​​​‌‌​​‌​‌​‌‌‌​​‌​​‌‌​​‌​‌​‌‌‌‌​‌​​​‌​‌‌‌​​‌‌​‌‌​‌​‌‌​​‌​‌⁠</span>
+  </div>
+</footer>
+
+<a class="btn btn-red fab js-wa" id="fab" href="https://wa.me/573505748769?text=Hola%20%C3%91api%2C%20quiero%20agendar%20un%20corte" target="_blank" rel="noopener" aria-label="Agendar por WhatsApp" data-i18n-aria="cta">
+  <svg class="wa anim-nudge" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wa"/></svg><span data-i18n="fab">Agendar</span>
+</a>
+
+<noscript><style>.rv{opacity:1!important;transform:none!important}.shave .txt{clip-path:none!important}.hair,.blade{display:none!important}.screw{transform:none!important}</style></noscript>
+
+<script>
+/* editorial-ui · Cristian Pérez · cristianperez.me */
+/* ============================================================
+   DATOS DE ÑAPI — edita solo esta parte.
+   null = todavía no hay dato (se muestra "por confirmar").
+   ============================================================ */
+const CONFIG = {
+  whatsapp: "573505748769",           // +57 350 5748769, sin + ni espacios
+  instagram: null,                    // ej: "napibarber" (sin @)
+  services: [
+    { id: "corte", cop: null, nzd: null },   // ej: cop: 25000, nzd: 35
+    { id: "barba", cop: null, nzd: null },
+    { id: "combo", cop: null, nzd: null },
+  ],
+  cities: {
+    armenia: {
+      tz: "America/Bogota",
+      address: null,                  // ej: "Cra 14 # 20-30, barrio X"
+      maps: null,                     // enlace de Google Maps
+      hours: [null, null, null, null, null, null, null], // lunes a domingo, ej: "9:00 – 19:00" o "Cerrado"
+    },
+    auckland: {
+      tz: "Pacific/Auckland",
+      address: null,
+      maps: null,
+      hours: [null, null, null, null, null, null, null],
+    },
+  },
+  // Fotos: pon los archivos en /fotos y escribe la ruta en src (ej: "fotos/corte-1.jpg").
+  cuts: [
+    { src: null, name: { es: "[Nombre del corte]", en: "[Cut name]" }, detail: { es: "[Detalle: máquina, tijera, cuánto tarda]", en: "[Detail: clippers, scissors, time]" } },
+    { src: null, name: { es: "[Nombre del corte]", en: "[Cut name]" }, detail: { es: "[Detalle del corte]", en: "[Cut detail]" } },
+    { src: null, name: { es: "[Nombre del corte]", en: "[Cut name]" }, detail: { es: "[Detalle del corte]", en: "[Cut detail]" } },
+    { src: null, name: { es: "[Barba]", en: "[Beard]" }, detail: { es: "[Detalle de la barba]", en: "[Beard detail]" } },
+    { src: null, name: { es: "[Nombre del corte]", en: "[Cut name]" }, detail: { es: "[Detalle del corte]", en: "[Cut detail]" } },
+    { src: null, name: { es: "[Corte + barba]", en: "[Cut + beard]" }, detail: { es: "[Detalle del corte]", en: "[Cut detail]" } },
+  ],
+};
+
+/* ============================================================
+   TEXTOS (ES / EN)
+   ============================================================ */
+const T = {
+  es: {
+    city_label: "Ciudad", lang_label: "Idioma",
+    callout: "¡ahora sí!",
+    sign_line: "Barbería · Armenia ⇄ Auckland",
+    note_1: "Corte, barba o los dos.",
+    note_2: "Tú pones la cabeza, yo pongo la máquina.",
+    cta: "Agendar por WhatsApp",
+    cta_note: "Escribes, cuadramos la hora y listo.",
+    blade: "rapando…",
+    cenefa: ["Corte", "Barba", "Corte + barba", "Armenia", "Auckland", "Ñapi Barber"],
+    serv_eye: "Lista de precios",
+    serv_h: "Lo que hay pa' esa <em>cabeza</em>",
+    serv_p: "Ves el precio de la ciudad que elegiste arriba. ¿Estás en la otra? Cámbiala y listo.",
+    board_t: "Precios",
+    board_sub: { armenia: "Armenia · pesos colombianos (COP)", auckland: "Auckland · dólares neozelandeses (NZD)" },
+    s: {
+      corte: ["Corte", "Máquina, tijera o las dos. Me dices cómo lo quieres y así sale."],
+      barba: ["Barba", "Perfilada, rebajada o al ras. Chao al look de náufrago."],
+      combo: ["Corte + barba", "El combo. Entras con pena y sales a cambiar la foto de perfil."],
+      otro: ["¿Otra cosa?", "Si no está en la tabla, pregunta. Lo peor que te digo es que no."],
+    },
+    book: "Pedir", ask: "Preguntar",
+    tbd: "Por confirmar",
+    in_city: (c) => "en " + c,
+    gal_eye: "Catálogo de cortes",
+    gal_h: "Escoge tu <em>número</em>",
+    gal_tap: "Toca un corte pa' ver el detalle y pedirlo por número.",
+    gal_hover: "Pasa el mouse por un corte pa' ver el detalle y pedirlo por número.",
+    poster_t: "Cortes Ñapi",
+    poster_s: "Pídelo por número",
+    ph: "foto pendiente",
+    want: "Quiero el",
+    cut: "Corte",
+    donde_eye: "Cómo llegar",
+    donde_h: "Dos sillas, un océano en la <em>mitad</em>",
+    country: { armenia: "Quindío · Colombia", auckland: "Aotearoa · Nueva Zelanda" },
+    here: "Tu ciudad", there: "La otra",
+    now: "Allá son las",
+    addr_tbd: "[Dirección exacta]",
+    hours: "Horario",
+    maps: "Abrir en Google Maps",
+    days: ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+    ocean: (n, tomorrow) => `Ahora mismo Auckland va <b>${n} horas adelante</b> de Armenia.` + (tomorrow ? " Allá ya es mañana, literal." : " Allá el día va más avanzado."),
+    foot_kick: "¿Y entonces?",
+    foot_big: "¿Te motilo o qué?",
+    foot_small: "Toca el letrero y me escribes.",
+    nav_prices: "Precios", nav_cuts: "Cortes", nav_where: "Cómo llegar",
+    credit: "Motilado a mano por",
+    fab: "Agendar",
+    wa_default: "Hola Ñapi, quiero agendar un corte",
+    wa_service: (s, c) => `Hola Ñapi, quiero agendar: ${s} en ${c}`,
+    wa_ask: "Hola Ñapi, tengo una pregunta",
+    wa_cut: (n) => `Hola Ñapi, quiero agendar el corte número ${n}`,
+    title: "Ñapi Barber · Armenia y Auckland",
+    loc: "es-CO",
+  },
+  en: {
+    city_label: "City", lang_label: "Language",
+    callout: "now we're talking!",
+    sign_line: "Barbershop · Armenia ⇄ Auckland",
+    note_1: "Cut, beard or both.",
+    note_2: "You bring the head, I bring the clippers.",
+    cta: "Book on WhatsApp",
+    cta_note: "You text, we pick a time, done.",
+    blade: "buzzing…",
+    cenefa: ["Haircut", "Beard", "Cut + beard", "Armenia", "Auckland", "Ñapi Barber"],
+    serv_eye: "Price list",
+    serv_h: "What's on for that <em>head</em>",
+    serv_p: "Prices show for the city you picked up top. In the other one? Switch it.",
+    board_t: "Prices",
+    board_sub: { armenia: "Armenia · Colombian pesos (COP)", auckland: "Auckland · New Zealand dollars (NZD)" },
+    s: {
+      corte: ["Haircut", "Clippers, scissors or both. Tell me how you want it and that's how it leaves."],
+      barba: ["Beard", "Lined up, trimmed or taken down. Bye-bye castaway look."],
+      combo: ["Cut + beard", "The full combo. Walk in shy, walk out needing a new profile pic."],
+      otro: ["Something else?", "If it's not on the board, just ask. Worst case, I say no."],
+    },
+    book: "Book", ask: "Ask",
+    tbd: "TBC",
+    in_city: (c) => "in " + c,
+    gal_eye: "Cut catalogue",
+    gal_h: "Pick your <em>number</em>",
+    gal_tap: "Tap a cut for the details and book it by number.",
+    gal_hover: "Hover over a cut for the details and book it by number.",
+    poster_t: "Ñapi cuts",
+    poster_s: "Order by number",
+    ph: "photo coming",
+    want: "I want no.",
+    cut: "Cut",
+    donde_eye: "Getting there",
+    donde_h: "Two chairs, one ocean in <em>between</em>",
+    country: { armenia: "Quindío · Colombia", auckland: "Aotearoa · New Zealand" },
+    here: "Your city", there: "The other",
+    now: "It's",
+    addr_tbd: "[Exact address]",
+    hours: "Hours",
+    maps: "Open in Google Maps",
+    days: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    ocean: (n, tomorrow) => `Right now Auckland is <b>${n} hours ahead</b> of Armenia.` + (tomorrow ? " It's literally tomorrow over there." : ""),
+    foot_kick: "So?",
+    foot_big: "Shall I cut it or what?",
+    foot_small: "Tap the sign and text me.",
+    nav_prices: "Prices", nav_cuts: "Cuts", nav_where: "Getting there",
+    credit: "Hand-cut by",
+    fab: "Book",
+    wa_default: "Hi Ñapi, I'd like to book a cut",
+    wa_service: (s, c) => `Hi Ñapi, I'd like to book: ${s} in ${c}`,
+    wa_ask: "Hi Ñapi, I have a question",
+    wa_cut: (n) => `Hi Ñapi, I'd like to book cut number ${n}`,
+    title: "Ñapi Barber · Armenia & Auckland",
+    loc: "en-NZ",
+  },
+};
+const CITY_NAME = { armenia: "Armenia", auckland: "Auckland" };
+
+/* ---------- Estado: idioma y ciudad (detección + memoria) ---------- */
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+};
+function detectLang() {
+  const saved = store.get("napi-lang");
+  if (saved === "es" || saved === "en") return saved;
+  const langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "es"];
+  for (const l of langs) {
+    const p = String(l).toLowerCase().slice(0, 2);
+    if (p === "es") return "es";
+    if (p === "en") return "en";
+  }
+  return "en";
+}
+function detectCity(lang) {
+  const saved = store.get("napi-city");
+  if (saved === "armenia" || saved === "auckland") return saved;
+  let tz = "";
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+  if (/Auckland|Chatham|Pacific\/|Australia\//.test(tz)) return "auckland";
+  if (/America\//.test(tz)) return "armenia";
+  return lang === "es" ? "armenia" : "auckland";
+}
+const state = { lang: detectLang(), city: null };
+state.city = detectCity(state.lang);
+
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+const TILDE_SVG = '<svg viewBox="0 0 200 60" aria-hidden="true"><use href="#tilde-shape"/></svg>';
+const WA_SVG = '<svg class="wa" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wa"/></svg>';
+const waLink = (msg) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const phWrap = (s) => /^\[.*\]$/.test(s) ? `<span class="ph">${esc(s)}</span>` : esc(s);
+const fmtPrice = (svc, cur) => svc[cur] == null ? null : cur === "cop" ? "$" + new Intl.NumberFormat("es-CO").format(svc[cur]) : "NZ$" + new Intl.NumberFormat("en-NZ").format(svc[cur]);
+
+/* ---------- Lista de precios ---------- */
+function renderBoard() {
+  const t = T[state.lang];
+  const cur = state.city === "armenia" ? "cop" : "nzd", other = cur === "cop" ? "nzd" : "cop";
+  const otherCity = state.city === "armenia" ? "auckland" : "armenia";
+  $("#board-sub").textContent = t.board_sub[state.city];
+  const rows = CONFIG.services.map((svc) => {
+    const [name, desc] = t.s[svc.id];
+    const p = fmtPrice(svc, cur), po = fmtPrice(svc, other);
+    return `<div class="row">
+      <div class="row-top"><span class="row-name">${esc(name)}</span><span class="dots" aria-hidden="true"></span><span class="row-price ${p ? "" : "tbd"}" ${p ? "" : `title="${t.tbd}"`}>${p || "$ —"}</span></div>
+      <div class="row-sub"><p class="row-desc">${esc(desc)}</p>
+        <div class="row-meta"><span class="row-other">${t.in_city(CITY_NAME[otherCity])}: ${po || "$ —"} ${other.toUpperCase()}</span>
+        <a class="btn btn-ink" href="${waLink(t.wa_service(name, CITY_NAME[state.city]))}" target="_blank" rel="noopener">${WA_SVG}<span>${t.book}</span></a></div></div>
+    </div>`;
+  });
+  const [oName, oDesc] = t.s.otro;
+  rows.push(`<div class="row">
+    <div class="row-top"><span class="row-name">${esc(oName)}</span></div>
+    <div class="row-sub"><p class="row-desc">${esc(oDesc)}</p>
+      <div class="row-meta"><a class="btn btn-line" href="${waLink(t.wa_ask)}" target="_blank" rel="noopener">${WA_SVG}<span>${t.ask}</span></a></div></div>
+  </div>`);
+  $("#rows").innerHTML = rows.join("");
+}
+
+/* ---------- Catálogo de cortes ---------- */
+function renderCuts() {
+  const t = T[state.lang];
+  $("#cuts").innerHTML = CONFIG.cuts.map((c, i) => {
+    const n = String(i + 1).padStart(2, "0");
+    const name = c.name[state.lang], detail = c.detail[state.lang];
+    const media = c.src
+      ? `<img src="${esc(c.src)}" alt="${esc(name.replace(/[\[\]]/g, ""))}" loading="lazy" decoding="async">`
+      : `<div class="cut-ph"><svg viewBox="0 0 200 220" aria-hidden="true"><use href="#ico-head"/></svg><em>${t.ph}</em></div>`;
+    return `<div class="cut rv" role="button" tabindex="0" aria-expanded="false" style="--d:${(i % 3) * 0.07}s" aria-label="${t.cut} ${n}">
+      <div class="cut-frame">${media}<span class="cut-num" aria-hidden="true">${n}</span>
+        <div class="cut-info"><p>${phWrap(detail)}</p>
+          <a class="btn btn-red" href="${waLink(t.wa_cut(n))}" target="_blank" rel="noopener" tabindex="-1">${WA_SVG}<span>${t.want} ${n}</span></a></div></div>
+      <span class="cut-name">${phWrap(name)}</span>
+    </div>`;
+  }).join("");
+  $("#hint-txt").textContent = fine ? t.gal_hover : t.gal_tap;
+}
+function bindCuts() {
+  $$(".cut").forEach((el) => {
+    const info = $(".cut-info", el), btn = $(".cut-info .btn", el);
+    el.style.setProperty("--hh", (info.offsetHeight || 160) + "px");
+    const toggle = (force) => {
+      const open = force ?? !el.classList.contains("open");
+      $$(".cut.open").forEach((o) => { if (o !== el) { o.classList.remove("open"); o.setAttribute("aria-expanded", "false"); $(".cut-info .btn", o).tabIndex = -1; } });
+      el.classList.toggle("open", open); el.setAttribute("aria-expanded", String(open)); btn.tabIndex = open ? 0 : -1;
+    };
+    el.addEventListener("click", (e) => { if (!e.target.closest(".btn")) toggle(); });
+    el.addEventListener("keydown", (e) => {
+      if (e.target !== el) return;
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
+      if (e.key === "Escape") toggle(false);
+    });
+  });
+}
+
+/* ---------- Relojes y lugares ---------- */
+function partsIn(tz) {
+  const p = new Intl.DateTimeFormat("en-US", { timeZone: tz, hourCycle: "h23", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", weekday: "short" }).formatToParts(new Date());
+  const g = (k) => p.find((x) => x.type === k).value;
+  return { h: +g("hour") % 24, m: +g("minute"), s: +g("second"), day: +g("day"), y: +g("year"), mo: +g("month"), wd: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].indexOf(g("weekday")) };
+}
+const timeTxt = (tz) => { try { return new Intl.DateTimeFormat(T[state.lang].loc, { hour: "numeric", minute: "2-digit", timeZone: tz }).format(new Date()); } catch (e) { return "--:--"; } };
+const handAngles = (q) => ({ h: (q.h % 12) * 30 + q.m * 0.5, m: q.m * 6 + q.s * 0.1 });
+
+function renderPlaces() {
+  const t = T[state.lang];
+  const order = state.city === "armenia" ? ["armenia", "auckland"] : ["auckland", "armenia"];
+  $("#places").innerHTML = order.map((id, i) => {
+    const c = CONFIG.cities[id], q = partsIn(c.tz);
+    const mapsHref = c.maps || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Ñapi Barber " + (id === "armenia" ? "Armenia Quindío" : "Auckland"))}`;
+    const hours = t.days.map((d, k) => `<div class="${k === q.wd ? "today" : ""}"><span>${d}</span><span>${c.hours[k] ? esc(c.hours[k]) : t.tbd}</span></div>`).join("");
+    return `<article class="place rv" style="--d:${i * 0.1}s">
+      <span class="place-tag ${i ? "other" : ""}">${i ? t.there : t.here}</span>
+      <div class="place-top">
+        <div class="clock" data-clock="${id}" aria-hidden="true"><b>ÑAPI</b><span class="hand h"></span><span class="hand m"></span><span class="hand s"></span><i></i></div>
+        <div><h3 class="place-city">${CITY_NAME[id]}</h3><span class="place-country">${t.country[id]}</span>
+          <span class="place-time">${t.now} <b data-time="${id}">${timeTxt(c.tz)}</b></span></div>
+      </div>
+      <p class="addr">${c.address ? esc(c.address) : `<span class="ph">${t.addr_tbd}</span>`}</p>
+      <a class="btn btn-ink" href="${esc(mapsHref)}" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-pin"/></svg><span>${t.maps}</span></a>
+      <div class="hours"><h4>${t.hours}</h4>${hours}</div>
+    </article>`;
+  }).join("");
+  const a = partsIn("America/Bogota"), b = partsIn("Pacific/Auckland");
+  const diff = Math.round((Date.UTC(b.y, b.mo - 1, b.day, b.h, b.m) - Date.UTC(a.y, a.mo - 1, a.day, a.h, a.m)) / 36e5);
+  $("#ocean").innerHTML = t.ocean(diff, a.day !== b.day);
+  setupClocks();
+}
+let clockIO;
+const swung = new Set();
+function setHands(cl) {
+  const A = handAngles(partsIn(CONFIG.cities[cl.dataset.clock].tz));
+  const [h, m] = $$(".hand", cl);
+  h.style.transform = `rotate(${A.h}deg)`; m.style.transform = `rotate(${A.m}deg)`;
+}
+function setupClocks() {
+  const clocks = $$(".clock");
+  clocks.forEach((cl) => {
+    const s = $(".hand.s", cl);
+    s.style.animationDelay = `-${partsIn(CONFIG.cities[cl.dataset.clock].tz).s}s`;
+    s.classList.add("anim-sec");
+    if (reduce || swung.has(cl.dataset.clock)) setHands(cl);
+  });
+  if (reduce) return;
+  clockIO && clockIO.disconnect();
+  clockIO = new IntersectionObserver((es) => es.forEach((e) => {
+    const cl = e.target;
+    cl.classList.toggle("is-paused", !e.isIntersecting);
+    if (!e.isIntersecting || swung.has(cl.dataset.clock)) return;
+    swung.add(cl.dataset.clock);
+    const A = handAngles(partsIn(CONFIG.cities[cl.dataset.clock].tz));
+    const [h, m] = $$(".hand", cl);
+    // Las manecillas dan la vuelta hasta la hora real, con el rebote de un reloj de pared
+    const spin = (el, to, turns, dur) => el.animate([
+      { transform: "rotate(0deg)" }, { transform: `rotate(${to + turns + 7}deg)`, offset: .8 }, { transform: `rotate(${to + turns}deg)` },
+    ], { duration: dur, easing: "cubic-bezier(.3,.1,.2,1)" }).finished.then(() => setHands(cl));
+    spin(h, A.h, 360, 1500); spin(m, A.m, 720, 1700);
+  }), { threshold: 0.4 });
+  clocks.forEach((c) => clockIO.observe(c));
+}
+function tickClocks() {
+  $$("[data-time]").forEach((el) => { el.textContent = timeTxt(CONFIG.cities[el.dataset.time].tz); });
+  $$(".clock").forEach((cl) => { if ((reduce || swung.has(cl.dataset.clock)) && !$(".hand.h", cl).getAnimations().length) setHands(cl); });
+}
+
+/* ---------- Cenefa ---------- */
+function renderCenefa() {
+  const chunk = T[state.lang].cenefa.map((w) => `<span>${esc(w)}${TILDE_SVG}</span>`).join("");
+  const el = $("#cen-track");
+  el.innerHTML = chunk + chunk + chunk + chunk;
+  requestAnimationFrame(() => el.style.setProperty("--dur", (el.scrollWidth / 2 / 40).toFixed(1) + "s")); // ~40 px/s
+}
+
+/* ---------- Idioma / ciudad ---------- */
+function setSeg(seg, attr, val) {
+  const btns = $$("button", seg);
+  btns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset[attr] === val)));
+  const on = btns.find((b) => b.dataset[attr] === val), pill = $(".pill", seg);
+  if (on && pill) { pill.style.width = on.offsetWidth + "px"; pill.style.transform = `translateX(${on.offsetLeft - 3}px)`; }
+}
+function applyLang() {
+  const t = T[state.lang];
+  document.documentElement.lang = state.lang;
+  document.title = t.title;
+  $$("[data-i18n]").forEach((el) => { const v = t[el.dataset.i18n]; if (typeof v === "string") el.textContent = v; });
+  $$("[data-i18n-html]").forEach((el) => { const v = t[el.dataset.i18nHtml]; if (typeof v === "string") el.innerHTML = v; });
+  $$("[data-i18n-aria]").forEach((el) => { const v = t[el.dataset.i18nAria]; if (typeof v === "string") el.setAttribute("aria-label", v); });
+  $$(".js-wa").forEach((a) => { a.href = waLink(t.wa_default); });
+  setSeg($("#seg-lang"), "lang", state.lang);
+  renderCenefa(); renderAll(); tickClocks();
+}
+function renderAll() {
+  renderBoard(); renderCuts(); renderPlaces();
+  setSeg($("#seg-city"), "city", state.city);
+  observeReveals(); bindCuts(); rowsOnTouch();
+}
+
+/* ---------- Revelados ---------- */
+let io;
+function observeReveals() {
+  io = io || new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { rootMargin: "0px 0px -8% 0px", threshold: 0.1 });
+  $$(".rv:not(.in), .shave:not(.in)").forEach((el) => {
+    if (el.classList.contains("shave")) el.style.setProperty("--h", -(el.offsetHeight + 8) + "px");
+    io.observe(el);
+  });
+}
+
+/* ---------- En el celular: la fila centrada de la tabla se ilumina ---------- */
+let rowIO;
+function rowsOnTouch() {
+  if (fine || reduce) return;
+  rowIO && rowIO.disconnect();
+  rowIO = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle("lit", e.isIntersecting)), { rootMargin: "-45% 0px -45% 0px" });
+  $$("#rows .row").forEach((r) => rowIO.observe(r));
+}
+
+/* ---------- Ajustar el letrero al ancho ---------- */
+function fitSign() {
+  const h1 = $("#h1"), wrap = $(".sign-wrap");
+  const ls = $$(".L", h1);
+  const saved = ls.map((l) => l.style.transform); ls.forEach((l) => (l.style.transform = "none"));
+  h1.style.fontSize = "100px";
+  const w = ls[ls.length - 1].getBoundingClientRect().right - ls[0].getBoundingClientRect().left + 4.5; // + sombra
+  const byW = (wrap.clientWidth / w) * 100 * 0.99;
+  const byH = innerHeight * (innerWidth >= 900 ? 0.3 : 0.26);
+  h1.style.fontSize = Math.min(byW, byH) + "px";
+  ls.forEach((l, i) => (l.style.transform = saved[i]));
+}
+
+/* ============================================================
+   EL MOMENTO: la máquina rapa la pantalla
+   ============================================================ */
+function bezier(x1, y1, x2, y2) {
+  const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx;
+  const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
+  const sx = (t) => ((ax * t + bx) * t + cx) * t, sy = (t) => ((ay * t + by) * t + cy) * t, dx = (t) => (3 * ax * t + 2 * bx) * t + cx;
+  return (x) => { let t = x; for (let i = 0; i < 6; i++) { const d = dx(t); if (Math.abs(d) < 1e-6) break; t -= (sx(t) - x) / d; } return sy(Math.min(1, Math.max(0, t))); };
+}
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+
+function drawHair(canvas, w, h) {
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+  const ctx = canvas.getContext("2d");
+  ctx.scale(dpr, dpr);
+  ctx.fillStyle = "#1B1511"; ctx.fillRect(0, 0, w, h);
+  const r = rng(7);
+  const cols = ["#271E18", "#30251D", "#3B2E24", "#47382B", "#574535", "#6A5541"];
+  const n = Math.min(26000, Math.round((w * h) / 46));
+  ctx.lineCap = "round";
+  for (let i = 0; i < n; i++) {
+    const x = r() * w, y = r() * h;
+    const ang = Math.PI / 2 + 0.55 * Math.sin(x / 170 + y / 420) + 0.35 * Math.cos(y / 130) + (r() - 0.5) * 0.5;
+    const len = 10 + r() * 22, ex = x + Math.cos(ang) * len, ey = y + Math.sin(ang) * len, bend = (r() - 0.5) * 9;
+    ctx.strokeStyle = cols[(r() * cols.length) | 0];
+    ctx.lineWidth = 0.7 + r() * 1.2;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.quadraticCurveTo((x + ex) / 2 + bend, (y + ey) / 2 - bend, ex, ey); ctx.stroke();
+  }
+}
+function dropTilde(delay = 0) {
+  return $("#tilde").animate([
+    { opacity: 0, transform: "translate3d(-30%, -300%, 0) rotate(-38deg)" },
+    { opacity: 1, transform: "translate3d(-6%, -40%, 0) rotate(-8deg)", offset: .55 },
+    { opacity: 1, transform: "translate3d(0, 12%, 0) rotate(4deg) scaleY(.8)", offset: .74 },
+    { opacity: 1, transform: "translate3d(0, -6%, 0) rotate(-2deg) scaleY(1.05)", offset: .88 },
+    { opacity: 1, transform: "none" },
+  ], { duration: 950, delay, easing: "cubic-bezier(.3,.1,.3,1)", fill: "both" }).finished;
+}
+async function introShave() {
+  const d = document.documentElement;
+  const hero = $("#hero"), hair = $("#hair"), hairIn = $("#hair-in"), blade = $("#blade"), box = $("#strands");
+  const W = hero.clientWidth, H = hero.clientHeight;
+  drawHair($("#hair-c"), W, H);
+  try { await Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 900))]); } catch (e) {}
+  fitSign();
+  await new Promise((r) => setTimeout(r, 280));
+
+  const dur = W < 700 ? 1700 : 1950, easing = "cubic-bezier(.5,0,.3,1)", ez = bezier(.5, 0, .3, 1);
+  const opts = { duration: dur, easing, fill: "forwards" };
+  hair.animate([{ transform: "translate3d(0,0,0)" }, { transform: `translate3d(0,${-H}px,0)` }], opts);
+  hairIn.animate([{ transform: "translate3d(0,0,0)" }, { transform: `translate3d(0,${H}px,0)` }], opts);
+  const bladeAnim = blade.animate([{ transform: `translate3d(0,${H}px,0)` }, { transform: "translate3d(0,-14px,0)" }], opts);
+
+  // Pelo que cae detrás de la cuchilla
+  const r = rng(21), N = W < 700 ? 50 : 86, frag = document.createDocumentFragment();
+  for (let i = 0; i < N; i++) {
+    const tt = (i + r() * .8) / N, y = H * (1 - ez(Math.min(1, tt))), x = r() * W;
+    const s = document.createElement("i");
+    s.className = "strand"; s.style.height = (8 + r() * 18) + "px"; s.style.opacity = "0";
+    if (r() > .55) s.style.background = "#4A3A2C";
+    frag.appendChild(s);
+    const rot0 = (r() - .5) * 120, rot1 = rot0 + (r() - .5) * 300, fall = 180 + r() * 380, drift = (r() - .5) * 90;
+    s.animate([
+      { opacity: 0, transform: `translate3d(${x}px,${y}px,0) rotate(${rot0}deg)` },
+      { opacity: 1, transform: `translate3d(${x + drift * .15}px,${y + 6}px,0) rotate(${rot0}deg)`, offset: .06 },
+      { opacity: 0, transform: `translate3d(${x + drift}px,${y + fall}px,0) rotate(${rot1}deg)` },
+    ], { duration: 950 + r() * 750, delay: tt * dur, easing: "cubic-bezier(.4,0,.9,.6)", fill: "both" });
+  }
+  box.appendChild(frag);
+
+  await bladeAnim.finished;
+  blade.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 220, fill: "forwards" });
+  $(".blade-bar").classList.remove("anim-buzz");
+  hair.style.display = "none";
+  d.classList.add("intro-done");
+  await dropTilde(60);
+  $("#callout").classList.add("on");
+  setTimeout(() => { blade.remove(); hair.remove(); box.replaceChildren(); }, 1800);
+}
+function wiggleTilde() {
+  $("#tilde").animate([
+    { transform: "none" }, { transform: "translateY(-34%) rotate(-10deg)" }, { transform: "translateY(0) rotate(8deg) scaleY(.85)" }, { transform: "rotate(-4deg)" }, { transform: "none" },
+  ], { duration: 720, easing: "cubic-bezier(.3,.1,.3,1)" });
+}
+
+/* ---------- Scroll: barra compacta, el letrero se abre, cenefa con inercia ---------- */
+function onScrollSetup() {
+  const bar = $("#bar"), letters = $$("#h1 .L"), skew = $(".cen-skew"), hero = $("#hero");
+  let lastY = scrollY, k = 0, ticking = false;
+  function frame() {
+    const y = scrollY, vel = y - lastY; lastY = y;
+    bar.classList.toggle("compact", y > 40);
+    const hh = hero.offsetHeight;
+    if (!reduce && y < hh * 1.1) {
+      const p = y / hh;
+      letters.forEach((l, i) => { l.style.transform = p > 0 ? `translate3d(${(i - 1.5) * p * 30}px, ${p * (30 + i * 26)}px, 0) rotate(${(i - 1.5) * p * 3}deg)` : ""; });
+    }
+    if (!reduce) {
+      k += (Math.max(-7, Math.min(7, vel * .3)) - k) * .18;
+      skew.style.transform = `skewX(${(-k).toFixed(2)}deg)`;
+      if (Math.abs(k) > .05 || vel !== 0) { requestAnimationFrame(frame); return; }
+      skew.style.transform = "";
+    }
+    ticking = false;
+  }
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive: true });
+  frame();
+}
+
+/* ---------- Loops que se pausan fuera de pantalla ---------- */
+function pauseOffscreen() {
+  const o = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle("is-paused", !e.isIntersecting)), { rootMargin: "120px" });
+  o.observe($("#cenefa"));
+}
+
+/* ---------- Footer: el letrero se mece ---------- */
+function swing(amp = 9, dur = 2200) {
+  const f = [];
+  for (let i = 0; i <= 8; i++) f.push({ transform: `rotate(${(i % 2 ? -1 : 1) * amp * Math.pow(.55, i)}deg)` });
+  f.push({ transform: "rotate(0deg)" });
+  $("#hang").animate(f, { duration: dur, easing: "ease-in-out" });
+}
+function footBeat() {
+  if (reduce) return;
+  const hang = $("#hang");
+  const o = new IntersectionObserver(([e]) => { if (e.isIntersecting) { o.disconnect(); swing(12, 2600); } }, { threshold: .5 });
+  o.observe(hang);
+  if (fine) hang.addEventListener("pointerenter", () => { if (!hang.getAnimations().length) swing(5, 1600); });
+}
+
+/* ---------- Botones: ripple y leve imán ---------- */
+function buttonFeedback() {
+  addEventListener("pointerdown", (e) => {
+    const b = e.target.closest(".btn, .seg button");
+    if (!b || reduce) return;
+    const r = b.getBoundingClientRect(), size = Math.hypot(r.width, r.height) * 2;
+    const box = document.createElement("span"), c = document.createElement("span");
+    box.className = "ripple-box"; c.className = "ripple";
+    c.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - r.left - size / 2}px;top:${e.clientY - r.top - size / 2}px`;
+    box.appendChild(c); b.appendChild(box);
+    setTimeout(() => box.remove(), 700);
+  }, { passive: true });
+  if (!fine || reduce) return;
+  let cur = null, raf = 0;
+  addEventListener("pointermove", (e) => {
+    const b = e.target.closest(".btn:not(.fab)");
+    if (cur && cur !== b) { cur.style.translate = ""; cur = null; }
+    if (!b) return;
+    cur = b; cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      const r = b.getBoundingClientRect();
+      b.style.translate = `${(((e.clientX - r.left) / r.width - .5) * 12).toFixed(1)}px ${(((e.clientY - r.top) / r.height - .5) * 8).toFixed(1)}px`;
+    });
+  }, { passive: true });
+}
+
+/* ============================================================
+   Arranque
+   ============================================================ */
+(function init() {
+  $("#yr").textContent = new Date().getFullYear();
+  if (CONFIG.instagram) {
+    $("#ig-link").href = "https://www.instagram.com/" + CONFIG.instagram + "/";
+    $("#ig-txt").textContent = "@" + CONFIG.instagram; $("#ig-txt").classList.remove("ph");
+  }
+  applyLang();
+  fitSign();
+  setInterval(tickClocks, 15000);
+
+  $("#seg-lang").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-lang]"); if (!b || b.dataset.lang === state.lang) return;
+    state.lang = b.dataset.lang; store.set("napi-lang", state.lang); applyLang(); fitSign();
+  });
+  $("#seg-city").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-city]"); if (!b || b.dataset.city === state.city) return;
+    state.city = b.dataset.city; store.set("napi-city", state.city); renderAll();
+  });
+  $(".tilde-hit").addEventListener("click", wiggleTilde);
+  addEventListener("resize", () => { fitSign(); setSeg($("#seg-lang"), "lang", state.lang); setSeg($("#seg-city"), "city", state.city); });
+  if (document.fonts) document.fonts.ready.then(() => { fitSign(); setSeg($("#seg-lang"), "lang", state.lang); setSeg($("#seg-city"), "city", state.city); renderCenefa(); });
+
+  onScrollSetup(); pauseOffscreen(); footBeat(); buttonFeedback();
+
+  if (document.documentElement.classList.contains("intro")) {
+    scrollTo(0, 0);
+    introShave().catch(() => document.documentElement.classList.add("intro-done", "safe"));
+  }
+  console.info("%cÑapi Barber%c · motilado a mano por Cristian Pérez · https://cristianperez.me", "font-weight:700;color:#FBF6EC;background:#C62F23;padding:2px 6px", "");
+})();
+</script>
+</body>
+</html>
